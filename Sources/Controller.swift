@@ -23,7 +23,7 @@ public class Controller {
         filters[name] = body
     }
 
-    subscript(actionName: String) -> Action {
+    public subscript(actionName: String) -> Action {
         get {
             return { (request) in
                 guard let action = self.actions[actionName] else { 
