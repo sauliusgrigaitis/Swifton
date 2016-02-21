@@ -9,7 +9,8 @@ A Ruby on Rails inspired Web Framework for Swift that runs on Linux and OS X.
 * Install latest Development snapshot from [Swift.org](https://swift.org/download/) or via [swiftenv](https://github.com/kylef/swiftenv)(recommended).
 * ```swift --version``` should show something like:
 
-```Swift version 3.0-dev (LLVM a7663bb722, Clang 4ca3c7fa28, Swift 1c2f40e246)
+```
+Swift version 3.0-dev (LLVM a7663bb722, Clang 4ca3c7fa28, Swift 1c2f40e246)
 Target: x86_64-unknown-linux-gnu
 ```
 
