@@ -30,6 +30,10 @@ public class Router {
         return Response(.NotFound, contentType: "text/plain; charset=utf8", body: "Can't Open File. Permission Denied")
     }
 
+    public var errorReadingFromFile: Nest.Application = { request in
+        return Response(.NotFound, contentType: "text/plain; charset=utf8", body: "Error Reading From File")
+    }
+
     public func resources(name: String, _ controller: Controller) {
         let name = "/" + name
         get(name + "/new", controller["new"])
@@ -81,6 +85,7 @@ public class Router {
                 }
             }
         }
+        
         for (template, method, handler) in routes {
             if request.method == method.rawValue {
                 if let variables = template.extract(request.path) {
@@ -92,20 +97,26 @@ public class Router {
             }
         }
 
-        let appPath = Path(#file) + ".." + ".." + ".." + ".."
-        let publicPath = (appPath + "Public")
-        if publicPath.exists && publicPath.isDirectory {
-            let filePath = publicPath + String(request.path.characters.dropFirst())
-            if filePath.exists {
-                if filePath.isReadable {
-                    let contents:NSData? = try! filePath.read()
-                    if let body = String(data:contents!, encoding: NSUTF8StringEncoding) {
-                        return Response(.Ok, contentType: "text/plain; charset=utf8", body: body)
+        if request.path != "/" {
+            let appPath = Path(#file) + ".." + ".." + ".." + ".."
+            let publicPath = (appPath + "Public")
+            if publicPath.exists && publicPath.isDirectory {
+                let filePath = publicPath + String(request.path.characters.dropFirst())
+                if filePath.exists {
+                    if filePath.isReadable {
+                        do {
+                            let contents:NSData? = try filePath.read()
+                            if let body = String(data:contents!, encoding: NSUTF8StringEncoding) {
+                                return Response(.Ok, contentType: "text/plain; charset=utf8", body: body)
+                            }
+                        } catch {
+                            return errorReadingFromFile(request)
+                        }
+                    } else {
+                        return permissionDenied(request)
                     }
-                } else {
-                    return permissionDenied(request)
-                }
-            } 
+                } 
+            }
         }
 
         return notFound(request)
