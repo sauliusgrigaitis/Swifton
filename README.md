@@ -16,7 +16,7 @@ Target: x86_64-unknown-linux-gnu
 
 * Checkout [TodoApp](https://github.com/necolt/Swifton-TodoApp) example project.
 * Run ```swift build``` inside app (most of dependencies throw deprecation warnings).
-* Run ```./.build/debug/TodoApp```.
+* Run ```./.build/debug/Swifton-TodoApp```.
 * Open ```http://0.0.0.0:8000/todos``` in your browser.
 
 ## Routing
