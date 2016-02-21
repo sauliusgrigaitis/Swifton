@@ -98,8 +98,7 @@ public class Router {
         }
 
         if request.path != "/" {
-            let appPath = Path(#file) + ".." + ".." + ".." + ".."
-            let publicPath = (appPath + "Public")
+            let publicPath = Path(SwiftonConfig.publicDirectory)
             if publicPath.exists && publicPath.isDirectory {
                 let filePath = publicPath + String(request.path.characters.dropFirst())
                 if filePath.exists {
