@@ -162,10 +162,6 @@ Few options if you need persistence:
 
 Swifton supports Mustache like templates via [Stencil](https://github.com/kylef/Stencil) template language. View is rendered with controller's method ```render(template_path, object)```. Object needs either to conform to ```HTMLRenderable``` protocol, either be ```[String: Any]``` type where ```Any``` allows to pass complex structures.
 
-Views are loaded from ```Views``` directory by default, you can also change this default setting by changing value of ```SwiftonConfig.viewsDirectory``` (preferable in ```main.swift``` file). Currently views are not cached, so you don't need to restart server or recompile after views are changed. 
-
-Static assets (JavaScript, CSS, images etc.) are loaded from ```Public``` directory by default, you can also change this default setting by changing value of ```SwiftonConfig.publicDirectory``` (preferable in ```main.swift``` file).
-
 ```
 <tbody>
   {% for todo in todos %}
@@ -180,6 +176,10 @@ Static assets (JavaScript, CSS, images etc.) are loaded from ```Public``` direct
 </tbody>
 
 ```
+
+Views are loaded from ```Views``` directory by default, you can also change this default setting by changing value of ```SwiftonConfig.viewsDirectory``` (preferable in ```main.swift``` file). Currently views are not cached, so you don't need to restart server or recompile after views are changed. 
+
+Static assets (JavaScript, CSS, images etc.) are loaded from ```Public``` directory by default, you can also change this default setting by changing value of ```SwiftonConfig.publicDirectory``` (preferable in ```main.swift``` file).
 
 ## JSON support
 

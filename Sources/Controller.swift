@@ -7,7 +7,7 @@ public class Controller {
     public typealias FilterCollection = [String: FilterOptions]
     public typealias FilterOptions = [String: [String]]?
 
-    static var applicationController = Controller()
+    public static var applicationController = Controller()
     var actions = [String: Action]()
     var filters = [String: Filter]()
     var beforeFilters = FilterCollection()
