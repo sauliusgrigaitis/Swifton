@@ -101,9 +101,11 @@ class TodosController: ApplicationController {
 
     // set todo shared variable to actions can use it
     filter("setTodo") { request in
-        if let t = Todo.find(request.params["id"]) { 
-            self.todo = t as? Todo
-        }
+        // Redirect to "/todos" list if Todo instance is not found 
+        guard let t = Todo.find(request.params["id"]) else { return self.redirectTo("/todos") } 
+        self.todo = t as? Todo
+        // Run next filter or action
+        return self.next
     }
 
 }}
@@ -156,7 +158,7 @@ Few options if you need persistence:
 
 Swifton supports Mustache like templates via [Stencil](https://github.com/kylef/Stencil) template language. View is rendered with controller's method ```render(template_path, object)```. Object needs either to conform to ```HTMLRenderable``` protocol, either be ```[String: Any]``` type where ```Any``` allows to pass complex structures.
 
-```
+```html
 <tbody>
   {% for todo in todos %}
     <tr>
