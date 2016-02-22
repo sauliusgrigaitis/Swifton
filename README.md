@@ -128,7 +128,7 @@ action("show") { request in
 
 ## Models
 
-Swifton is ORM angostic web framework. You can use any ORM of your choice. Swifton comes with simple in-memory MemoryModel class that you can inherit and use for your apps. Simple as this: 
+Swifton is ORM agnostic web framework. You can use any ORM of your choice. Swifton comes with simple in-memory MemoryModel class that you can inherit and use for your apps. Simple as this: 
 
 ```swift
 class User: MemoryModel {
