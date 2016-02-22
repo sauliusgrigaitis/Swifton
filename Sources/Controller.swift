@@ -3,7 +3,7 @@ import Inquiline
 public class Controller {
     public typealias Parameters = [String: String]
     public typealias Action = (request: Request) -> Response
-    public typealias Filter = (request: Request) -> ()
+    public typealias Filter = (request: Request) -> Response?
     public typealias FilterCollection = [String: FilterOptions]
     public typealias FilterOptions = [String: [String]]?
 
@@ -12,6 +12,7 @@ public class Controller {
     var filters = [String: Filter]()
     var beforeFilters = FilterCollection()
     var afterFilters = FilterCollection()
+    public let next:Response? = nil 
 
     public init() {}
 
@@ -30,9 +31,15 @@ public class Controller {
                     return Response(.NotFound, contentType: "text/plain; charset=utf8", body: "Action Not Found")
                 }
          
-                self.runFilters(request, actionName, self.beforeFilters) 
+                if let filterResponse = self.runFilters(request, actionName, self.beforeFilters) {
+                    return filterResponse
+                }
+
                 let response = action(request: request)
-                self.runFilters(request, actionName, self.afterFilters) 
+
+                if let filterResponse = self.runFilters(request, actionName, self.afterFilters) {
+                    return filterResponse
+                }
 
                 return response
             }
@@ -43,24 +50,31 @@ public class Controller {
         }
     }
 
-    func runFilters(request: Request, _ actionName: String, _ filterCollection: FilterCollection) {
+    func runFilters(request: Request, _ actionName: String, _ filterCollection: FilterCollection) -> Response? {
         for (filter, options) in filterCollection {
             // prefer filter in child controller
             if let selectedFilter = self.filters[filter] {
                 // if "only" option is used then check if action is in the list
                 if let opts = options, let only = opts["only"] {
                     if only.contains(actionName) { 
-                        selectedFilter(request: request)
+                        if let response = selectedFilter(request: request) {
+                            return response
+                        }
                     }
                     // otherwise run filter without any checking
                 } else {
-                    selectedFilter(request: request)
+                    if let response = selectedFilter(request: request) {
+                        return response
+                    }
                 }
             // use ApplicationController filter if it's not defined in child controller
             } else if let selectedFilter = Controller.applicationController.filters[filter] {
-                selectedFilter(request: request)
+                if let response = selectedFilter(request: request) {
+                    return response
+                }
             }
         }
+        return nil   
     }
 
     public func beforeAction(filter: String, _ options: FilterOptions = nil) -> Void {

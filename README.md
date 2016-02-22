@@ -107,9 +107,11 @@ class TodosController: ApplicationController {
 
     // set todo shared variable to actions can use it
     filter("setTodo") { request in
-        if let t = Todo.find(request.params["id"]) { 
-            self.todo = t as? Todo
-        }
+        // Redirect to "/todos" list if Todo instance is not found 
+        guard let t = Todo.find(request.params["id"]) else { return self.redirectTo("/todos") } 
+        self.todo = t as? Todo
+        // Run next filter or action
+        return self.next
     }
 
 }}
