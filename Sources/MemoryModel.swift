@@ -43,7 +43,9 @@ public class MemoryModel: HTMLRenderable, JSONRenderable {
     }
 
     public static func find(id: String?) -> MemoryModel? {
-      return all.filter{ $0.id == Int(id!) }.first!
+        guard let stringID = id else { return nil }
+        guard let intID = Int(stringID) else { return nil }
+        return all.filter{ $0.id == intID }.first 
     }
 
     public static func destroy(model: MemoryModel?) {
