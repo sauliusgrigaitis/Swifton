@@ -142,7 +142,7 @@ User.all.count // 1
 user["name"] // "Saulius"
 user["surname"] // "Grigaitis"
 user.update(["name": "James", "surname": "Bond"])
-user["surname"]) // "Bond"
+user["surname"] // "Bond"
 User.destroy(user)
 User.all.count // 0
 
