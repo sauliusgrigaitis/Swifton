@@ -162,7 +162,7 @@ Few options if you need persistence:
 
 Swifton supports Mustache like templates via [Stencil](https://github.com/kylef/Stencil) template language. View is rendered with controller's method ```render(template_path, object)```. Object needs either to conform to ```HTMLRenderable``` protocol, either be ```[String: Any]``` type where ```Any``` allows to pass complex structures.
 
-```
+```html
 <tbody>
   {% for todo in todos %}
     <tr>
