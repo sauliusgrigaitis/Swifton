@@ -1,4 +1,4 @@
-![Swifton](https://pbs.twimg.com/media/BspM9nCCcAAKcij.jpg)
+[![IMAGE ALT TEXT](https://pbs.twimg.com/media/BspM9nCCcAAKcij.jpg)](https://youtu.be/jYa1eI1hpDE?t=221)
 
 # Swifton - Swift on Rails
 
