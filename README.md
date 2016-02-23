@@ -160,7 +160,7 @@ Few options if you need persistence:
 
 * [PostgreSQL](https://github.com/Zewo/PostgreSQL) adapter.
 * [MySQL](https://github.com/Zewo/MySQL) adapter.
-* [Fluent](https://github.com/tannernelson/fluent) simple SQLite ORM. 
+* [Fluent](https://github.com/qutheory/fluent) simple SQLite ORM. 
 
 ## Views
 
