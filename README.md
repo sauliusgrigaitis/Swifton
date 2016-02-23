@@ -1,8 +1,16 @@
-[![IMAGE ALT TEXT](https://pbs.twimg.com/media/BspM9nCCcAAKcij.jpg)](https://youtu.be/jYa1eI1hpDE?t=221)
+[![TAILOR SWIFT ON RAILS](https://pbs.twimg.com/media/BspM9nCCcAAKcij.jpg)](https://youtu.be/jYa1eI1hpDE?t=221)
 
-# Swifton - Swift on Rails
+*(Taylor Swift on Rails. "Mean" Performance)*
+
+# Swifton
 
 A Ruby on Rails inspired Web Framework for Swift that runs on Linux and OS X.
+
+![Build Status](https://travis-ci.org/necolt/Swifton.svg?branch=master)
+![Linux](https://img.shields.io/badge/os-linux-green.svg?style=flat)
+![Mac OS X](https://img.shields.io/badge/os-Mac%20OS%20X-green.svg?style=flat)
+![Swift 2 compatible](https://img.shields.io/badge/swift2-compatible-4BC51D.svg?style=flat)
+[![MIT license](http://img.shields.io/badge/license-MIT-brightgreen.svg)](http://opensource.org/licenses/MIT)
 
 ## Getting Started
 
