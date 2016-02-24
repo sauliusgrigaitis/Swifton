@@ -21,6 +21,17 @@ A Ruby on Rails inspired Web Framework for Swift that runs on Linux and OS X.
 * Run ```./.build/debug/Swifton-TodoApp```.
 * Open ```http://0.0.0.0:8000/todos``` in your browser.
 
+## Contributing
+
+Contributions are more than welcome! The easiest way to start contributing to Swifton: 
+
+* Setup [TodoApp](https://github.com/necolt/Swifton-TodoApp) 
+* Pick one issue from the [issues list](https://github.com/necolt/swifton/issues) or propose enhancement. 
+* You can find Swifton source code in ```Swifton-TodoApp/Packages/Swifton-<version>``` directory. Packages inside ```Packages``` directory comes with Git repository so feel free to do you changes there.
+* Compile and test [TodoApp](https://github.com/necolt/Swifton-TodoApp), this will help to check your changes and avoid regressions.
+* Commit and push your changes, open pull request.
+* Enjoy ;) 
+
 ## Routing
 
 Swifton comes with ready to use Router, also you can use any router as long as it accepts Request and returns Response. Routes are defined in ```main.swift``` file. Configured Router is passed to [Nest](https://github.com/nestproject/Nest) interface supporting server. Swifton Router supports [RFC6570](https://tools.ietf.org/html/rfc6570) URI Templates via [URITemplate](https://github.com/kylef/URITemplate.swift) library. Router allows to define ```resources``` and regular routes.
