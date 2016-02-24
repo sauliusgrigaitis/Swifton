@@ -1,8 +1,16 @@
-[![IMAGE ALT TEXT](https://pbs.twimg.com/media/BspM9nCCcAAKcij.jpg)](https://youtu.be/jYa1eI1hpDE?t=221)
+[![TAILOR SWIFT ON RAILS](https://pbs.twimg.com/media/BspM9nCCcAAKcij.jpg)](https://youtu.be/jYa1eI1hpDE?t=221)
 
-# Swifton - Swift on Rails
+*(Taylor Swift on Rails. "Mean" Performance)*
+
+# Swifton
 
 A Ruby on Rails inspired Web Framework for Swift that runs on Linux and OS X.
+
+![Build Status](https://travis-ci.org/necolt/Swifton.svg?branch=master)
+![Linux](https://img.shields.io/badge/os-linux-green.svg?style=flat)
+![Mac OS X](https://img.shields.io/badge/os-Mac%20OS%20X-green.svg?style=flat)
+![Swift 2 compatible](https://img.shields.io/badge/swift2-compatible-4BC51D.svg?style=flat)
+[![MIT license](http://img.shields.io/badge/license-MIT-brightgreen.svg)](http://opensource.org/licenses/MIT)
 
 ## Getting Started
 
@@ -128,7 +136,7 @@ action("show") { request in
 
 ## Models
 
-Swifton is ORM angostic web framework. You can use any ORM of your choice. Swifton comes with simple in-memory MemoryModel class that you can inherit and use for your apps. Simple as this: 
+Swifton is ORM agnostic web framework. You can use any ORM of your choice. Swifton comes with simple in-memory MemoryModel class that you can inherit and use for your apps. Simple as this: 
 
 ```swift
 class User: MemoryModel {
@@ -152,7 +160,7 @@ Few options if you need persistence:
 
 * [PostgreSQL](https://github.com/Zewo/PostgreSQL) adapter.
 * [MySQL](https://github.com/Zewo/MySQL) adapter.
-* [Fluent](https://github.com/tannernelson/fluent) simple SQLite ORM. 
+* [Fluent](https://github.com/qutheory/fluent) simple SQLite ORM. 
 
 ## Views
 
