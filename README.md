@@ -11,6 +11,7 @@ A Ruby on Rails inspired Web Framework for Swift that runs on Linux and OS X.
 ![Mac OS X](https://img.shields.io/badge/os-Mac%20OS%20X-green.svg?style=flat)
 ![Swift 2 compatible](https://img.shields.io/badge/swift2-compatible-4BC51D.svg?style=flat)
 [![MIT license](http://img.shields.io/badge/license-MIT-brightgreen.svg)](http://opensource.org/licenses/MIT)
+[![codebeat badge](https://codebeat.co/badges/c5246f1f-d1cd-4424-b9ec-9340a175a844)](https://codebeat.co/projects/github-com-necolt-swifton)
 
 ## Getting Started
 
