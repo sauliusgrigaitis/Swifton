@@ -74,7 +74,7 @@ public class Router {
     }
 
     public func respond(requestType: RequestType) -> ResponseType {
-        var request = requestType as! Request
+        var request = requestType as? Request ?? Request(method: requestType.method, path: requestType.path, headers: requestType.headers, body: requestType.body)
         request.params = parseParams(request)
 
         if request.method == "POST" {
