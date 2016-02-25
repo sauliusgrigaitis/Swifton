@@ -29,6 +29,7 @@ Contributions are more than welcome! The easiest way to start contributing to Sw
 * Pick one issue from the [issues list](https://github.com/necolt/swifton/issues) or propose enhancement. 
 * You can find Swifton source code in ```Swifton-TodoApp/Packages/Swifton-<version>``` directory. Packages inside ```Packages``` directory comes with Git repository so feel free to do you changes there.
 * Compile and test [TodoApp](https://github.com/necolt/Swifton-TodoApp), this will help to check your changes and avoid regressions.
+* Write tests and run it ```swift build && .build/debug/Spec```
 * Commit and push your changes, open pull request.
 * Enjoy ;) 
 

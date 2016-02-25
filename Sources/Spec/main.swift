@@ -1,0 +1,5 @@
+import Quick
+
+QCKMain([
+    MemoryModelSpec(),
+])
