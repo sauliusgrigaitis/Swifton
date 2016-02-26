@@ -14,7 +14,7 @@ A Ruby on Rails inspired Web Framework for Swift that runs on Linux and OS X.
 
 ## Getting Started
 
-* Install latest Development snapshot from [Swift.org](https://swift.org/download/) or via [swiftenv](https://github.com/kylef/swiftenv). If you are on OSX I highly recommend [swiftenv](https://github.com/kylef/swiftenv) - latest Swift will be able to coexist with system wide Swift that comes with Xcode.
+* Install Development snapshot [version](https://github.com/necolt/Swifton/blob/master/.swift-version) from [Swift.org](https://swift.org/download/) or via [swiftenv](https://github.com/kylef/swiftenv). If you are on OSX I highly recommend [swiftenv](https://github.com/kylef/swiftenv) - latest Swift will be able to coexist with system wide Swift that comes with Xcode.
 * ```swift --version``` should show something like: ```Swift version 3.0-dev ...```
 * Checkout [TodoApp](https://github.com/necolt/Swifton-TodoApp) example project.
 * Run ```swift build``` inside app (most of dependencies throw deprecation warnings).
