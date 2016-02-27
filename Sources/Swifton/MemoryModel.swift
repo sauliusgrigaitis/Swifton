@@ -68,6 +68,11 @@ public class MemoryModel: HTMLRenderable, JSONRenderable, Equatable {
         return items as Any
     }
 
+    public static func reset() {
+        all = [MemoryModel]() 
+        id = 1
+    }
+
     public func update(attributes: [String: String]) {
         var attrs = [String: Any]()
         for (key, value) in attributes {
@@ -89,7 +94,7 @@ public class MemoryModel: HTMLRenderable, JSONRenderable, Equatable {
     public func renderableJSONAttributes() -> [String: Any] {
         return self.attributes  
     }
-    
+
 }
 
 public func ==(lhs: MemoryModel, rhs: MemoryModel) -> Bool {

@@ -113,7 +113,7 @@ public class Controller {
         } else {
             body = "null"
         }
-        return Response(.Ok, contentType: "text/html", body: body)
+        return Response(.Ok, contentType: "application/json", body: body)
     }
 
     public func renderJSON(context: [String: Any]? = nil) -> Response {
