@@ -33,18 +33,25 @@ class ControllerSpec: QuickSpec {
             }
 
             it("Renders HTML collection") {
-                record = TestModel.create(["name": "James", "surname": "Bond"])
+                TestModel.create(["name": "James", "surname": "Bond"])
                 let rendered = controller["index"](request: request)
                 expect(rendered.body).to(equal("\nSaulius\n\nJames\n\n\n"))
             }
 
             it("Renders JSON collection") {
-                record = TestModel.create(["name": "James", "surname": "Bond"])
+                TestModel.create(["name": "James", "surname": "Bond"])
                 request.headers = [("Accept", "application/json")]
                 let rendered = controller["index"](request: request)
                 let firstModel = "{\"name\": \"Saulius\", \"surname\": \"Grigaitis\", \"id\": \"1\"}"
                 let secondModel = "{\"name\": \"James\", \"surname\": \"Bond\", \"id\": \"2\"}"
                 expect(rendered.body).to(equal("{\"testModels\": [\(firstModel), \(secondModel)]}"))
+            }
+
+            it("Renders HTML single model with UTF8 string") {
+                TestModel.create(["name": "ąčęėį"])
+                request.params = ["id": "2"]
+                let rendered = controller["show"](request: request)
+                expect(rendered.body).to(equal("ąčęėį\n"))
             }
 
             it("Renders HTML single model") {
