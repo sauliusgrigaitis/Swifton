@@ -9,11 +9,10 @@ class ControllerSpec: QuickSpec {
             let controller = TestModelsController()
             var request:Request!
             var postRequest:Request!
-            var record:TestModel!
             beforeEach {
                 SwiftonConfig.viewsDirectory = "Sources/Spec/Fixtures/Views" 
                 TestModel.reset()
-                record = TestModel.create([
+                TestModel.create([
                     "name": "Saulius", 
                     "surname": "Grigaitis"
                 ])
