@@ -87,7 +87,7 @@ public class Controller {
 
     public func render(template: String) -> Response {
         let body = StencilView(template).render()
-        return Response(.Ok, contentType: "text/html", body: body)
+        return Response(.Ok, contentType: "text/html; charset=utf8", body: body)
     }
 
     public func render(template: String, _ object: HTMLRenderable?) -> Response {
@@ -97,13 +97,13 @@ public class Controller {
         } else {
             body = StencilView(template).render()
         }
-        return Response(.Ok, contentType: "text/html", body: body)
+        return Response(.Ok, contentType: "text/html; charset=utf8", body: body)
     }
 
     public func render(template: String, _ context: [String: Any]) -> Response {
         var body:String
         body = StencilView(template, context).render()
-        return Response(.Ok, contentType: "text/html", body: body)
+        return Response(.Ok, contentType: "text/html; charset=utf8", body: body)
     }
 
     public func renderJSON(object: JSONRenderable?) -> Response {
@@ -113,13 +113,13 @@ public class Controller {
         } else {
             body = "null"
         }
-        return Response(.Ok, contentType: "application/json", body: body)
+        return Response(.Ok, contentType: "application/json; charset=utf8", body: body)
     }
 
     public func renderJSON(context: [String: Any]? = nil) -> Response {
         var body:String
         body = JSONView(context).render()
-        return Response(.Ok, contentType: "application/json", body: body)
+        return Response(.Ok, contentType: "application/json; charset=utf8", body: body)
     }
 
     public func redirectTo(path: String) -> Response {

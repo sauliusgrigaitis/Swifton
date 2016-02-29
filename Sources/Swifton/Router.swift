@@ -76,16 +76,8 @@ public class Router {
     public func respond(requestType: RequestType) -> ResponseType {
         var request = requestType as? Request ?? Request(method: requestType.method, path: requestType.path, headers: requestType.headers, body: requestType.body)
         request.params = parseParams(request)
-
-        if request.method == "POST" {
-            if let paramsMethod = request.params["_method"] {
-                let paramsMethod = paramsMethod.uppercaseString
-                if ["DELETE", "HEAD", "PATCH", "PUT", "OPTIONS"].contains(paramsMethod) {
-                    request.method = paramsMethod
-                }
-            }
-        }
-        
+        request.method = resolveMethod(request)
+                
         for (template, method, handler) in routes {
             if request.method == method.rawValue {
                 if let variables = template.extract(request.path) {
@@ -97,6 +89,14 @@ public class Router {
             }
         }
 
+        if let staticFile = serveStaticFile(request) {     
+            return staticFile
+        }
+
+        return notFound(request)
+    }
+
+    func serveStaticFile(request: Request) -> ResponseType? {
         if request.path != "/" {
             let publicPath = Path(SwiftonConfig.publicDirectory)
             if publicPath.exists && publicPath.isDirectory {
@@ -116,9 +116,21 @@ public class Router {
                     }
                 } 
             }
-        }
+        } 
+        return nil
+    }
 
-        return notFound(request)
+
+    func resolveMethod(request: Request) -> String {
+        if request.method == "POST" {
+            if let paramsMethod = request.params["_method"] {
+                let paramsMethod = paramsMethod.uppercaseString
+                if ["DELETE", "HEAD", "PATCH", "PUT", "OPTIONS"].contains(paramsMethod) {
+                    return paramsMethod
+                }
+            }
+        }
+        return request.method
     }
 
     // poor man query string parser, this needs proper implementation
