@@ -90,6 +90,17 @@ class RouterSpec: QuickSpec {
                 }
             }
 
+            describe("Parameters parser") {
+                it("supports UTF8 POST params") {
+                    request.path = "/testModels"
+                    request.method = "POST"
+                    request.body = "name=Kęstutis&surname=Švitrigaila"
+                    router.respond(request)
+                    let record = TestModel.find(2)!
+                    expect(String(record.attributes["name"]!)).to(equal("Kęstutis"))
+                    expect(String(record.attributes["surname"]!)).to(equal("Švitrigaila"))
+                }
+            }
         }
     }
 }
