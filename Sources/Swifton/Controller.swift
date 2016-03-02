@@ -84,56 +84,56 @@ public class Controller {
     public func afterAction(filter: String, _ options: FilterOptions = nil) -> Void {
         afterFilters[filter] = options   
     }
+}
 
-    public func render(template: String) -> Response {
-        let body = StencilView(template).render()
-        return Response(.Ok, contentType: "text/html; charset=utf8", body: body)
+public func render(template: String) -> Response {
+    let body = StencilView(template).render()
+    return Response(.Ok, contentType: "text/html; charset=utf8", body: body)
+}
+
+public func render(template: String, _ object: HTMLRenderable?) -> Response {
+    var body:String
+    if let obj = object {
+        body = StencilView(template, obj.renderableAttributes()).render()
+    } else {
+        body = StencilView(template).render()
     }
+    return Response(.Ok, contentType: "text/html; charset=utf8", body: body)
+}
 
-    public func render(template: String, _ object: HTMLRenderable?) -> Response {
-        var body:String
-        if let obj = object {
-            body = StencilView(template, obj.renderableAttributes()).render()
-        } else {
-            body = StencilView(template).render()
+public func render(template: String, _ context: [String: Any]) -> Response {
+    var body:String
+    body = StencilView(template, context).render()
+    return Response(.Ok, contentType: "text/html; charset=utf8", body: body)
+}
+
+public func renderJSON(object: JSONRenderable?) -> Response {
+    var body:String
+    if let obj = object {
+        body = JSONView(obj.renderableJSONAttributes()).render()
+    } else {
+        body = "null"
+    }
+    return Response(.Ok, contentType: "application/json; charset=utf8", body: body)
+}
+
+public func renderJSON(context: [String: Any]? = nil) -> Response {
+    var body:String
+    body = JSONView(context).render()
+    return Response(.Ok, contentType: "application/json; charset=utf8", body: body)
+}
+
+public func redirectTo(path: String) -> Response {
+    return Response(.Found, headers: [("Location", path)])
+}
+
+public func respondTo(request: Request, _ responders: [String: () -> Response]) -> Response {
+    let accepts = request.accept!.split(",")
+    for (accept, response) in responders {
+        if accepts.contains(accept.mimeType()) {
+            return response()
         }
-        return Response(.Ok, contentType: "text/html; charset=utf8", body: body)
     }
-
-    public func render(template: String, _ context: [String: Any]) -> Response {
-        var body:String
-        body = StencilView(template, context).render()
-        return Response(.Ok, contentType: "text/html; charset=utf8", body: body)
-    }
-
-    public func renderJSON(object: JSONRenderable?) -> Response {
-        var body:String
-        if let obj = object {
-            body = JSONView(obj.renderableJSONAttributes()).render()
-        } else {
-            body = "null"
-        }
-        return Response(.Ok, contentType: "application/json; charset=utf8", body: body)
-    }
-
-    public func renderJSON(context: [String: Any]? = nil) -> Response {
-        var body:String
-        body = JSONView(context).render()
-        return Response(.Ok, contentType: "application/json; charset=utf8", body: body)
-    }
-
-    public func redirectTo(path: String) -> Response {
-        return Response(.Found, headers: [("Location", path)])
-    }
-
-    public func respondTo(request: Request, _ responders: [String: () -> Response]) -> Response {
-        let accepts = request.accept!.split(",")
-        for (accept, response) in responders {
-            if accepts.contains(accept.mimeType()) {
-                return response()
-            }
-        }
-        return Response(.NotAcceptable)
-    }
+    return Response(.NotAcceptable)
 }
 
