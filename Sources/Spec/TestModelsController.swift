@@ -3,7 +3,7 @@ import Swifton
 class TestModelsController: TestApplicationController { 
     var testModel: TestModel?    
 
-    override init() { super.init()
+    override func controller() { 
 
     beforeAction("setTestModel", ["only": ["show", "edit", "update", "destroy"]])
 

@@ -14,7 +14,9 @@ public class Controller {
     var afterFilters = FilterCollection()
     public let next:Response? = nil 
 
-    public init() {}
+    public init() { controller() }
+    
+    public func controller() {}
 
     public func action(name: String, body: Action) {
         actions[name] = body
