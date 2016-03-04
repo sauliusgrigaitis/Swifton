@@ -19,6 +19,19 @@ public class ParametersMiddleware: Middleware {
                 newRequest.params[name.removePercentEncoding()] = value.removePercentEncoding()
             }
         }
+        newRequest.method = self.resolveMethod(newRequest)
         return closure(newRequest)
     } 
+
+    func resolveMethod(request: Request) -> String {
+        if request.method == "POST" {
+            if let paramsMethod = request.params["_method"] {
+                let paramsMethod = paramsMethod.uppercaseString
+                if ["DELETE", "HEAD", "PATCH", "PUT", "OPTIONS"].contains(paramsMethod) {
+                    return paramsMethod
+                }
+            }
+        }
+        return request.method
+    }
 }

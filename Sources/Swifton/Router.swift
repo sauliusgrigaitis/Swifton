@@ -80,7 +80,6 @@ public class Router {
 
     public func resolveRoute(request: Request) -> Response {
         var newRequest = request
-        newRequest.method = resolveMethod(newRequest)
                 
         for (template, method, handler) in routes {
             if newRequest.method == method.rawValue {
@@ -122,18 +121,5 @@ public class Router {
             }
         } 
         return nil
-    }
-
-
-    func resolveMethod(request: Request) -> String {
-        if request.method == "POST" {
-            if let paramsMethod = request.params["_method"] {
-                let paramsMethod = paramsMethod.uppercaseString
-                if ["DELETE", "HEAD", "PATCH", "PUT", "OPTIONS"].contains(paramsMethod) {
-                    return paramsMethod
-                }
-            }
-        }
-        return request.method
     }
 }
