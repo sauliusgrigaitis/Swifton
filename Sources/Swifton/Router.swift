@@ -74,26 +74,30 @@ public class Router {
     }
 
     public func respond(requestType: RequestType) -> ResponseType {
-        var request = requestType as? Request ?? Request(method: requestType.method, path: requestType.path, headers: requestType.headers, body: requestType.body)
-        request.params = parseParams(request)
-        request.method = resolveMethod(request)
+         let request = requestType as? Request ?? Request(method: requestType.method, path: requestType.path, headers: requestType.headers, body: requestType.body)
+        return ParametersMiddleware().call(request, resolveRoute)
+    }
+
+    public func resolveRoute(request: Request) -> Response {
+        var newRequest = request
+        newRequest.method = resolveMethod(newRequest)
                 
         for (template, method, handler) in routes {
-            if request.method == method.rawValue {
-                if let variables = template.extract(request.path) {
+            if newRequest.method == method.rawValue {
+                if let variables = template.extract(newRequest.path) {
                     for (key, value) in variables {
-                        request.params[key] = value  
+                        newRequest.params[key] = value
                     }
-                    return handler(request)
+                    return handler(newRequest)
                 }
             }
         }
 
-        if let staticFile = serveStaticFile(request) {     
-            return staticFile
+        if let staticFile = serveStaticFile(newRequest) {
+            return staticFile as! Response
         }
 
-        return notFound(request)
+        return notFound(newRequest) as! Response
     }
 
     func serveStaticFile(request: Request) -> ResponseType? {
@@ -132,26 +136,4 @@ public class Router {
         }
         return request.method
     }
-
-    // poor man query string parser, this needs proper implementation
-    public func parseParams(request: Request) -> [String: String] {
-        var queryString:String = ""
-        var params = [String: String]()
-        if Method(rawValue: request.method) == .GET {
-            let elements = request.path.split(1, separator: "?")
-            if elements.count > 1 {
-                queryString = request.path.split(1, separator: "?").last!
-            }
-        } else { 
-            queryString = request.body!
-        }
-
-        for keyValue in queryString.split("&") {
-            let tokens = keyValue.split(1, separator: "=")
-            if let name = tokens.first, value = tokens.last {
-                params[name.removePercentEncoding()] = value.removePercentEncoding()
-            }
-        }
-        return params
-    }  
 }
