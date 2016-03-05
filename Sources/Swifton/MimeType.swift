@@ -1,5 +1,4 @@
 // https://gist.githubusercontent.com/ngs/918b07f448977789cf69/raw/05bbb2103a41e0ed5d5579b3666d61c0891f91c0/MimeType.swift
-import Foundation
 internal let DEFAULT_MIME_TYPE = "application/octet-stream"
 
 internal let mimeTypes = [
@@ -113,19 +112,6 @@ internal func MimeType(ext: String?) -> String {
         return mimeTypes[ext!.lowercaseString]!
     }
     return DEFAULT_MIME_TYPE
-}
-
-extension NSURL {
-    public func mimeType() -> String {
-        return MimeType(self.pathExtension)
-    }
-}
-
-
-extension NSString {
-    public func mimeType() -> String {
-        return MimeType(self.pathExtension)
-    }
 }
 
 extension String {
