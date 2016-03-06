@@ -56,20 +56,7 @@ public class Controller {
         for (filter, options) in filterCollection {
             // prefer filter in child controller
             if let selectedFilter = self.filters[filter] {
-                // if "only" option is used then check if action is in the list
-                if let opts = options, let only = opts["only"] {
-                    if only.contains(actionName) { 
-                        if let response = selectedFilter(request: request) {
-                            return response
-                        }
-                    }
-                    // otherwise run filter without any checking
-                } else {
-                    if let response = selectedFilter(request: request) {
-                        return response
-                    }
-                }
-            // use ApplicationController filter if it's not defined in child controller
+                return runFilter(selectedFilter, actionName, request, options)
             } else if let selectedFilter = Controller.applicationController.filters[filter] {
                 if let response = selectedFilter(request: request) {
                     return response
@@ -77,6 +64,23 @@ public class Controller {
             }
         }
         return nil   
+    }
+
+    func runFilter(filter: Filter, _ actionName: String, _ request: Request, _ options: FilterOptions) -> Response? {
+        // if "only" option is used then check if action is in the list
+        if let opts = options, let only = opts["only"] {
+            if only.contains(actionName) { 
+                if let response = filter(request: request) {
+                    return response
+                }
+            }
+            // otherwise run filter without any checking
+        } else {
+            if let response = filter(request: request) {
+                return response
+            }
+        }
+        return nil
     }
 
     public func beforeAction(filter: String, _ options: FilterOptions = nil) -> Void {

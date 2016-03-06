@@ -6,6 +6,7 @@ class TestModelsController: TestApplicationController {
     override func controller() { 
 
     beforeAction("setTestModel", ["only": ["show", "edit", "update", "destroy"]])
+    beforeAction("reset", ["only": ["show"]])
 
     action("index") { request in
         let testModels = ["testModels": TestModel.allAttributes()]

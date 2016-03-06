@@ -11,6 +11,7 @@ class ControllerSpec: QuickSpec {
             var postRequest:Request!
             beforeEach {
                 SwiftonConfig.viewsDirectory = "Sources/Spec/Fixtures/Views" 
+                Controller.applicationController = TestApplicationController()
                 TestModel.reset()
                 TestModel.create([
                     "name": "Saulius", 
