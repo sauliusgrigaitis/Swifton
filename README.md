@@ -1,5 +1,6 @@
 [![TAILOR SWIFT ON RAILS](https://pbs.twimg.com/media/BspM9nCCcAAKcij.jpg)](https://youtu.be/jYa1eI1hpDE?t=221)
 
+[![codebeat](https://codebeat.co/badges/c5246f1f-d1cd-4424-b9ec-9340a175a844)](https://codebeat.co/projects/github-com-necolt-swifton)
 *(Taylor Swift on Rails. "Mean" Performance)*
 
 # Swifton
