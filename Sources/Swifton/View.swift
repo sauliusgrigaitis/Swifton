@@ -11,7 +11,13 @@ struct StencilView {
     var context: [String: Any]? 
 
     init(_ path: String, _ context: [String: Any]? = nil) {
-        self.context = context
+        let defaultTemplateLoader = TemplateLoader(paths: [Path(SwiftonConfig.viewsDirectory)])
+        if context != nil {
+            self.context = context
+            self.context!["loader"] = defaultTemplateLoader
+        } else {
+            self.context = ["loader": defaultTemplateLoader]
+        }
 
         var templatePath = path.characters.split{$0 == "/"}.map(String.init)
         let templateName = templatePath.removeLast()
