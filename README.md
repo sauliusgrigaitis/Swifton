@@ -1,17 +1,37 @@
-[![IMAGE ALT TEXT](https://pbs.twimg.com/media/BspM9nCCcAAKcij.jpg)](https://youtu.be/jYa1eI1hpDE?t=221)
+[![TAILOR SWIFT ON RAILS](https://pbs.twimg.com/media/BspM9nCCcAAKcij.jpg)](https://youtu.be/jYa1eI1hpDE?t=221)
 
-# Swifton - Swift on Rails
+*(Taylor Swift on Rails. "Mean" Performance)*
+
+# Swifton
 
 A Ruby on Rails inspired Web Framework for Swift that runs on Linux and OS X.
 
+![Build Status](https://travis-ci.org/necolt/Swifton.svg?branch=master)
+![Linux](https://img.shields.io/badge/os-linux-green.svg?style=flat)
+![Mac OS X](https://img.shields.io/badge/os-Mac%20OS%20X-green.svg?style=flat)
+![Swift 2 compatible](https://img.shields.io/badge/swift2-compatible-4BC51D.svg?style=flat)
+[![MIT license](http://img.shields.io/badge/license-MIT-brightgreen.svg)](http://opensource.org/licenses/MIT)
+
 ## Getting Started
 
-* Install latest Development snapshot from [Swift.org](https://swift.org/download/) or via [swiftenv](https://github.com/kylef/swiftenv). If you are on OSX I highly recommend [swiftenv](https://github.com/kylef/swiftenv) - latest Swift will be able to coexist with system wide Swift that comes with Xcode.
+* Install Development snapshot [version](https://github.com/necolt/Swifton/blob/master/.swift-version) from [Swift.org](https://swift.org/download/) or via [swiftenv](https://github.com/kylef/swiftenv). If you are on OSX I highly recommend [swiftenv](https://github.com/kylef/swiftenv) - latest Swift will be able to coexist with system wide Swift that comes with Xcode.
 * ```swift --version``` should show something like: ```Swift version 3.0-dev ...```
 * Checkout [TodoApp](https://github.com/necolt/Swifton-TodoApp) example project.
 * Run ```swift build``` inside app (most of dependencies throw deprecation warnings).
 * Run ```./.build/debug/Swifton-TodoApp```.
 * Open ```http://0.0.0.0:8000/todos``` in your browser.
+
+## Contributing
+
+Contributions are more than welcome! The easiest way to start contributing to Swifton: 
+
+* Setup [TodoApp](https://github.com/necolt/Swifton-TodoApp) 
+* Pick one issue from the [issues list](https://github.com/necolt/swifton/issues) or propose enhancement. 
+* You can find Swifton source code in ```Swifton-TodoApp/Packages/Swifton-<version>``` directory. Packages inside ```Packages``` directory comes with Git repository so feel free to do you changes there.
+* Compile and test [TodoApp](https://github.com/necolt/Swifton-TodoApp), this will help to check your changes and avoid regressions.
+* Write tests and run it ```swift build && .build/debug/Spec```
+* Commit and push your changes, open pull request.
+* Enjoy ;) 
 
 ## Routing
 
@@ -152,7 +172,7 @@ Few options if you need persistence:
 
 * [PostgreSQL](https://github.com/Zewo/PostgreSQL) adapter.
 * [MySQL](https://github.com/Zewo/MySQL) adapter.
-* [Fluent](https://github.com/tannernelson/fluent) simple SQLite ORM. 
+* [Fluent](https://github.com/qutheory/fluent) simple SQLite ORM. 
 
 ## Views
 

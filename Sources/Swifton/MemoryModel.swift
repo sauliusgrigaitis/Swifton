@@ -1,7 +1,7 @@
-public class MemoryModel: HTMLRenderable, JSONRenderable {
-    static var id = 0 
-    static var all = [MemoryModel]() 
-    var attributes = [String: Any]()
+public class MemoryModel: HTMLRenderable, JSONRenderable, Equatable {
+    static var id = 1
+    public static var all = [MemoryModel]() 
+    public var attributes = [String: Any]()
     public var id:Int {
         get {
             return attributes["id"] as! Int
@@ -17,7 +17,7 @@ public class MemoryModel: HTMLRenderable, JSONRenderable {
         self.dynamicType.id += 1
     }
 
-    subscript(name: String) -> Any? {
+    public subscript(name: String) -> Any? {
         get {
             return attributes[name]
         }
@@ -45,7 +45,11 @@ public class MemoryModel: HTMLRenderable, JSONRenderable {
     public static func find(id: String?) -> MemoryModel? {
         guard let stringID = id else { return nil }
         guard let intID = Int(stringID) else { return nil }
-        return all.filter{ $0.id == intID }.first 
+        return find(intID)
+    }
+
+    public static func find(id: Int?) -> MemoryModel? {
+        return all.filter{ $0.id == id }.first 
     }
 
     public static func destroy(model: MemoryModel?) {
@@ -62,6 +66,11 @@ public class MemoryModel: HTMLRenderable, JSONRenderable {
             items.append(attrs as Any)
         }
         return items as Any
+    }
+
+    public static func reset() {
+        all = [MemoryModel]() 
+        id = 1
     }
 
     public func update(attributes: [String: String]) {
@@ -85,5 +94,10 @@ public class MemoryModel: HTMLRenderable, JSONRenderable {
     public func renderableJSONAttributes() -> [String: Any] {
         return self.attributes  
     }
+
+}
+
+public func ==(lhs: MemoryModel, rhs: MemoryModel) -> Bool {
+    return lhs.id == rhs.id
 }
 

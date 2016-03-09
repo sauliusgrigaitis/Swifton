@@ -74,29 +74,32 @@ public class Router {
     }
 
     public func respond(requestType: RequestType) -> ResponseType {
-        var request = requestType as! Request
-        request.params = parseParams(request)
+         let request = requestType as? Request ?? Request(method: requestType.method, path: requestType.path, headers: requestType.headers, body: requestType.body)
+        return ParametersMiddleware().call(request, resolveRoute)
+    }
 
-        if request.method == "POST" {
-            if let paramsMethod = request.params["_method"] {
-                let paramsMethod = paramsMethod.uppercaseString
-                if ["DELETE", "HEAD", "PATCH", "PUT", "OPTIONS"].contains(paramsMethod) {
-                    request.method = paramsMethod
-                }
-            }
-        }
-        
+    public func resolveRoute(request: Request) -> Response {
+        var newRequest = request
+                
         for (template, method, handler) in routes {
-            if request.method == method.rawValue {
-                if let variables = template.extract(request.path) {
+            if newRequest.method == method.rawValue {
+                if let variables = template.extract(newRequest.path) {
                     for (key, value) in variables {
-                        request.params[key] = value  
+                        newRequest.params[key] = value
                     }
-                    return handler(request)
+                    return handler(newRequest)
                 }
             }
         }
 
+        if let staticFile = serveStaticFile(newRequest) {
+            return staticFile as! Response
+        }
+
+        return notFound(newRequest) as! Response
+    }
+
+    func serveStaticFile(request: Request) -> ResponseType? {
         if request.path != "/" {
             let publicPath = Path(SwiftonConfig.publicDirectory)
             if publicPath.exists && publicPath.isDirectory {
@@ -116,30 +119,7 @@ public class Router {
                     }
                 } 
             }
-        }
-
-        return notFound(request)
+        } 
+        return nil
     }
-
-    // poor man query string parser, this needs proper implementation
-    public func parseParams(request: Request) -> [String: String] {
-        var queryString:String = ""
-        var params = [String: String]()
-        if Method(rawValue: request.method) == .GET {
-            let elements = request.path.split(1, separator: "?")
-            if elements.count > 1 {
-                queryString = request.path.split(1, separator: "?").last!
-            }
-        } else { 
-            queryString = request.body!
-        }
-
-        for keyValue in queryString.split("&") {
-            let tokens = keyValue.split(1, separator: "=")
-            if let name = tokens.first, value = tokens.last {
-                params[name.removePercentEncoding()] = value.removePercentEncoding()
-            }
-        }
-        return params
-    }  
 }

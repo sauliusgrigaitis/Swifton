@@ -1,0 +1,4 @@
+{% for testModel in testModels %}
+{{ testModel.name }}
+{% endfor %}
+
