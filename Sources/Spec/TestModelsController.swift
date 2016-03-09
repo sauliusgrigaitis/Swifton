@@ -7,6 +7,7 @@ class TestModelsController: TestApplicationController {
 
     beforeAction("setTestModel", ["only": ["show", "edit", "update", "destroy"]])
     beforeAction("reset", ["only": ["show"]])
+    beforeAction("crash", ["skip": ["index", "show", "new", "edit", "create", "update", "destroy"]])
 
     action("index") { request in
         let testModels = ["testModels": TestModel.allAttributes()]
@@ -45,6 +46,12 @@ class TestModelsController: TestApplicationController {
     filter("setTestModel") { request in
         guard let t = TestModel.find(request.params["id"]) else { return redirectTo("/testModels") } 
         self.testModel = t as? TestModel
+        return self.next
+    }
+
+    filter("crash") { request in
+        let crash:String? = nil
+        let _ = crash!
         return self.next
     }
 }}
