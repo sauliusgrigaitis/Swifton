@@ -109,7 +109,7 @@ public class Router {
                         do {
                             let contents:NSData? = try filePath.read()
                             if let body = String(data:contents!, encoding: NSUTF8StringEncoding) {
-                                return Response(.Ok, contentType: filePath.extension.mimeType + "; charset=utf8", body: body)
+                                return Response(.Ok, contentType: filePath.`extension`.mimeType + "; charset=utf8", body: body)
                             }
                         } catch {
                             return errorReadingFromFile(request)
