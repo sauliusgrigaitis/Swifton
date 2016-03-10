@@ -120,8 +120,8 @@ extension String {
     }
 }
 
-extension Optional where Wrapped: String {
+extension Optional {
     public func mimeType() -> String {
-        return MimeType(self)
+        return MimeType(self as! String?)
     }
 }
