@@ -119,3 +119,9 @@ extension String {
         return MimeType(self)
     }
 }
+
+extension Optional where Wrapped: String {
+    public func mimeType() -> String {
+        return MimeType(self)
+    }
+}
