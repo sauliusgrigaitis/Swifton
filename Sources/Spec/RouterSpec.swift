@@ -30,7 +30,7 @@ class RouterSpec: QuickSpec {
             describe("Resources") {
                 it("creates get '<resources>/new' route") {
                     let response = router.respond(request)
-                    expect(response.body).to(equal("new\n"))
+                    expect(response.body).to(equal("header\n\nnew\nfooter\n\n"))
                 }
 
                 it("creates get '<resources>/{id}' route") {

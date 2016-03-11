@@ -60,9 +60,9 @@ class ControllerSpec: QuickSpec {
                 expect(rendered.body).to(equal("Saulius\n"))
             }
 
-            it("Renders static HTML") {
+            it("Renders static HTML with included header and footer") {
                 let rendered = controller["new"](request: request)
-                expect(rendered.body).to(equal("new\n"))
+                expect(rendered.body).to(equal("header\n\nnew\nfooter\n\n"))
             }
 
             it("Parses POST request and uses params to create record") {
