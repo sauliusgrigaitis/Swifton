@@ -274,4 +274,7 @@ Click the button below to automatically set up this example to run on your own H
 
 ### Docker 
 
-Example [TodoApp](https://github.com/necolt/Swifton-TodoApp) can be deployed on Docker using the [docker-swift](https://github.com/swiftdocker/docker-swift).
+Swifton can be deployed with Docker. Some examples how to deploy it with Docker:
+* [TodoApp](https://github.com/necolt/Swifton-TodoApp) on EC2 Container Services (ECS) [example](http://ngs.io/2016/03/04/swift-webapp-on-ecs/)
+* Docker Container for the Apple's Swift programming language - [docker-swift](https://github.com/swiftdocker/docker-swift).
+
