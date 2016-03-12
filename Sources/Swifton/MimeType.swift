@@ -120,8 +120,3 @@ extension String {
     }
 }
 
-extension Optional {
-    public func mimeType() -> String {
-        return MimeType(self as? String ?? nil)
-    }
-}
