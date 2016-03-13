@@ -74,8 +74,10 @@ public class Router {
     }
 
     public func respond(requestType: RequestType) -> ResponseType {
-         let request = requestType as? Request ?? Request(method: requestType.method, path: requestType.path, headers: requestType.headers, body: requestType.body)
-        return ParametersMiddleware().call(request, resolveRoute)
+        let request = requestType as? Request ?? Request(method: requestType.method, path: requestType.path, headers: requestType.headers, body: requestType.body)
+        return ParametersMiddleware().call(request) { 
+          CookiesMiddleware().call($0, self.resolveRoute) 
+        }
     }
 
     public func resolveRoute(request: Request) -> Response {
