@@ -75,7 +75,7 @@ A controller inherits from ApplicationController class, which inherits from Cont
 class TodosController: ApplicationController { 
     // shared todo variable used to pass value between setTodo filter and actions
     var todo: Todo?    
-    override init() { super.init()
+    override func controller() { 
 
     // sets before filter setTodo only for specified actions 
     beforeAction("setTodo", ["only": ["show", "edit", "update", "destroy"]])
@@ -83,46 +83,46 @@ class TodosController: ApplicationController {
     // render all Todo instances with Index template (in Views/Todos/Index.html.stencil)
     action("index") { request in
         let todos = ["todos": Todo.allAttributes()]
-        return self.render("Todos/Index", todos)
+        return render("Todos/Index", todos)
     }
 
     // render Todo instance that was set in before filter
     action("show") { request in
-        return self.render("Todos/Show", self.todo)
+        return render("Todos/Show", self.todo)
     }
 
     // render static New template
     action("new") { request in
-        return self.render("Todos/New")
+        return render("Todos/New")
     }
 
     // render Todo instance's edit form
     action("edit") { request in
-        return self.render("Todos/Edit", self.todo)
+        return render("Todos/Edit", self.todo)
     } 
 
     // create new Todo instance and redirect to list of Todos 
     action("create") { request in
         Todo.create(request.params)
-        return self.redirectTo("/todos")
+        return redirectTo("/todos")
     }
     
     // update Todo instance and redirect to updated Todo instance
     action("update") { request in
         self.todo!.update(request.params)
-        return self.redirectTo("/todos/\(self.todo!.id)")
+        return redirectTo("/todos/\(self.todo!.id)")
     }
 
     // destroy Todo instance
     action("destroy") { request in
         Todo.destroy(self.todo)
-        return self.redirectTo("/todos")
+        return redirectTo("/todos")
     }
 
     // set todo shared variable to actions can use it
     filter("setTodo") { request in
         // Redirect to "/todos" list if Todo instance is not found 
-        guard let t = Todo.find(request.params["id"]) else { return self.redirectTo("/todos") } 
+        guard let t = Todo.find(request.params["id"]) else { return redirectTo("/todos") } 
         self.todo = t as? Todo
         // Run next filter or action
         return self.next
@@ -137,9 +137,9 @@ class TodosController: ApplicationController {
 ```swift 
 ...
 action("show") { request in
-    return self.respondTo(request, [
-        "html": { self.render("Todos/Show", self.todo) },
-        "json": { self.renderJSON(self.todo) }
+    return respondTo(request, [
+        "html": { render("Todos/Show", self.todo) },
+        "json": { renderJSON(self.todo) }
     ])
 }
 ...
@@ -203,9 +203,9 @@ Static assets (JavaScript, CSS, images etc.) are loaded from ```Public``` direct
 
 ```swift
 action("show") { request in
-    return self.respondTo(request, [
-        "html": { self.render("Todos/Show", self.todo) },
-        "json": { self.renderJSON(self.todo) }
+    return respondTo(request, [
+        "html": { render("Todos/Show", self.todo) },
+        "json": { renderJSON(self.todo) }
     ])
 }
 ```

@@ -1,3 +1,0 @@
-{% include "Header.html.stencil" %}
-new
-{% include "Footer.html.stencil" %}
