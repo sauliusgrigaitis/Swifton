@@ -27,17 +27,8 @@ public class MemoryModel: HTMLRenderable, JSONRenderable, Equatable {
     } 
 
     public static func create(attributes: [String: String]) -> Self {
-        var attrs = [String: Any]()
-        for (key, value) in attributes {
-            if let integer:Int = Int(value) {
-                attrs[key] = integer
-            } else if let double:Double = Double(value) {
-                attrs[key] = double
-            } else {
-                attrs[key] = value
-            }
-        }
-        let new = self.init(attrs)
+        let resolvedAttributes = self.resolveAttributes(attributes)
+        let new = self.init(resolvedAttributes)
         all.append(new)
         return new
     }
@@ -74,6 +65,10 @@ public class MemoryModel: HTMLRenderable, JSONRenderable, Equatable {
     }
 
     public func update(attributes: [String: String]) {
+        self.attributes = MemoryModel.resolveAttributes(attributes)
+    }
+
+    static func resolveAttributes(attributes: [String: String]) -> [String: Any] {
         var attrs = [String: Any]()
         for (key, value) in attributes {
             if let integer:Int = Int(value) {
@@ -84,7 +79,7 @@ public class MemoryModel: HTMLRenderable, JSONRenderable, Equatable {
               attrs[key] = value
             }
         }
-        self.attributes = attrs
+        return attrs
     }
   
     public func renderableAttributes() -> [String: Any] {
