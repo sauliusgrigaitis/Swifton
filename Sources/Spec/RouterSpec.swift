@@ -82,6 +82,14 @@ class RouterSpec: QuickSpec {
                 }
             }
 
+            //describe("Images") {
+            //    it("serves image file if action is not found") {
+            //        request.path = "/image.png"
+            //        let staticFile = router.respond(request)
+            //        expect(staticFile.body).toNot(equal("Route Not Found"))
+            //    }
+            //}
+
             describe("Errors") {
                 it("returns 'Route not Found' if no action and no static file is found") {
                     request.path = "/nonExisting"
