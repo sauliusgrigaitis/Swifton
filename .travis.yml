@@ -8,4 +8,3 @@ install:
 script:
 - . ~/.swiftenv/init
 - swift build
-- ./.build/debug/Spec
