@@ -80,6 +80,20 @@ class RouterSpec: QuickSpec {
                     let staticFile = router.respond(request)
                     expect(staticFile.body).to(equal("static\n"))
                 }
+
+                it("chooses the appropriate mimeType for a plaintext file") {
+                    request.path = "/static.txt"
+                    let staticFile = route.repond(request)
+                    expect(staticFile.contentType).to(equal("text/plain; charset=utf8"))
+                }
+
+                it("chooses the appropriate mimeType for a javascript file") {
+                    request.path = "/static.js"
+                    let staticFile = route.repond(request)
+                    expect(staticFile.contentType).to(equal("application/javascript; charset=utf8"))
+                }
+
+
             }
 
             describe("Errors") {
