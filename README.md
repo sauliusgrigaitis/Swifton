@@ -70,7 +70,7 @@ serve { request in
 
 ## Controllers 
 
-A controller inherits from ApplicationController class, which inherits from Controller class. Action is a closure that accepts Request object and returns Response object. ```beforeAction``` and ```afterAction``` allows to register filters before and after action is executed. 
+A controller inherits from ApplicationController class, which inherits from Controller class. Action is a closure that accepts Request object and returns Response object. 
 
 ```swift
 class TodosController: ApplicationController { 
@@ -132,6 +132,7 @@ class TodosController: ApplicationController {
 }}
 
 ```
+### Controller Responders
 
 ```respondTo``` allows to define multiple responders based client ```Accept``` header:
 
@@ -145,6 +146,20 @@ action("show") { request in
 }
 ...
 
+```
+
+### Controller Filters
+
+Swifton Controllers support ```beforeAction``` and ```afterAction``` filters, which run filters before or after action correspodingly. Filter is a closure that returns ```Response?```. Controller proceeds execution only if filter returns ```self.next``` (which is actually ```nil```), otherwise it returns ```Response``` object and doesn't proceed execution of other filters and action.  
+
+```swift
+filter("setTodo") { request in
+    // Redirect to "/todos" list if Todo instance is not found
+    guard let t = Todo.find(request.params["id"]) else { return self.redirectTo("/todos") }
+    self.todo = t as? Todo
+    // Run next filter or action
+    return self.next
+}
 ```
 
 ## Models
