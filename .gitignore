@@ -1,2 +1,4 @@
 .build/
 Packages/
+Swifton.xcodeproj/
+.DS_Store
