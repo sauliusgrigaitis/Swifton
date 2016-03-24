@@ -8,3 +8,4 @@ install:
 script:
 - . ~/.swiftenv/init
 - swift build
+- swift test
