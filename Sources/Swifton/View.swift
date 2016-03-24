@@ -2,13 +2,13 @@ import Stencil
 import PathKit
 
 protocol View {
-    init(_ path: String, _ context: [String: Any]?) 
-    func render() -> String 
+    init(_ path: String, _ context: [String: Any]?)
+    func render() -> String
 }
 
 struct StencilView {
     var template: Template?
-    var context: [String: Any]? 
+    var context: [String: Any]?
 
     init(_ path: String, _ context: [String: Any]? = nil) {
         let defaultTemplateLoader = TemplateLoader(paths: [Path(SwiftonConfig.viewsDirectory)])
@@ -19,9 +19,9 @@ struct StencilView {
             self.context = ["loader": defaultTemplateLoader]
         }
 
-        var templatePath = path.characters.split{$0 == "/"}.map(String.init)
+        var templatePath = path.characters.split {$0 == "/"}.map(String.init)
         let templateName = templatePath.removeLast()
-         
+
         let appPath = Path(SwiftonConfig.viewsDirectory)
         let paths = [appPath + templatePath.joinWithSeparator("/")]
         let templateLoader = TemplateLoader(paths: paths)
@@ -36,7 +36,7 @@ struct StencilView {
 }
 
 struct JSONView {
-    var context: [String: Any]? 
+    var context: [String: Any]?
 
     init(_ context: [String: Any]? = nil) {
         self.context = context
@@ -48,5 +48,3 @@ struct JSONView {
         return json!
     }
 }
-
-

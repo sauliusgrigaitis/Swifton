@@ -15,5 +15,5 @@ public class CookiesMiddleware: Middleware {
 
         response["Set-Cookie"] = response.cookies.map { $0 + "=" + $1 }.joinWithSeparator(";")
         return response
-    } 
+    }
 }

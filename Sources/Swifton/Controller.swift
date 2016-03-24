@@ -12,10 +12,10 @@ public class Controller {
     var filters = [String: Filter]()
     var beforeFilters = FilterCollection()
     var afterFilters = FilterCollection()
-    public let next:Response? = nil 
+    public let next: Response? = nil
 
     public init() { controller() }
-    
+
     public func controller() {}
 
     public func action(name: String, body: Action) {
@@ -29,10 +29,10 @@ public class Controller {
     public subscript(actionName: String) -> Action {
         get {
             return { (request) in
-                guard let action = self.actions[actionName] else { 
+                guard let action = self.actions[actionName] else {
                     return Response(.NotFound, contentType: "text/plain; charset=utf8", body: "Action Not Found")
                 }
-         
+
                 if let filterResponse = self.runFilters(request, actionName, self.beforeFilters) {
                     return filterResponse
                 }
@@ -65,7 +65,7 @@ public class Controller {
                 }
             }
         }
-        return nil   
+        return nil
     }
 
     func runFilter(filter: Filter, _ actionName: String, _ request: Request, _ options: FilterOptions) -> Response? {
@@ -101,7 +101,7 @@ public class Controller {
     }
 
     public func afterAction(filter: String, _ options: FilterOptions = nil) -> Void {
-        afterFilters[filter] = options   
+        afterFilters[filter] = options
     }
 }
 
@@ -111,7 +111,7 @@ public func render(template: String) -> Response {
 }
 
 public func render(template: String, _ object: HTMLRenderable?) -> Response {
-    var body:String
+    var body: String
     if let obj = object {
         body = StencilView(template, obj.renderableAttributes()).render()
     } else {
@@ -121,13 +121,13 @@ public func render(template: String, _ object: HTMLRenderable?) -> Response {
 }
 
 public func render(template: String, _ context: [String: Any]) -> Response {
-    var body:String
+    var body: String
     body = StencilView(template, context).render()
     return Response(.Ok, contentType: "text/html; charset=utf8", body: body)
 }
 
 public func renderJSON(object: JSONRenderable?) -> Response {
-    var body:String
+    var body: String
     if let obj = object {
         body = JSONView(obj.renderableJSONAttributes()).render()
     } else {
@@ -137,7 +137,7 @@ public func renderJSON(object: JSONRenderable?) -> Response {
 }
 
 public func renderJSON(context: [String: Any]? = nil) -> Response {
-    var body:String
+    var body: String
     body = JSONView(context).render()
     return Response(.Ok, contentType: "application/json; charset=utf8", body: body)
 }
@@ -155,4 +155,3 @@ public func respondTo(request: Request, _ responders: [String: () -> Response]) 
     }
     return Response(.NotAcceptable)
 }
-

@@ -18,7 +18,7 @@ class MemoryModelTests: SwiftonTest {
 
     override func doSetUp() {
         super.doSetUp()
-        
+
         TestModel.all = [MemoryModel]()
         record = TestModel.create(["name": "Saulius", "surname": "Grigaitis"])
     }
