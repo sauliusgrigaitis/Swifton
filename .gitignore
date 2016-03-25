@@ -1,4 +1,8 @@
 .build/
 Packages/
-Swifton.xcodeproj/
 .DS_Store
+
+## Xcode
+xcuserdata/
+*.xcscmblueprint
+
