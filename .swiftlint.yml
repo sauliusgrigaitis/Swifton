@@ -1,0 +1,9 @@
+included:
+  - Sources/Swifton
+  - Tests
+disabled_rules:
+  - force_cast
+  - force_try
+line_length: 120
+variable_name:
+  min_length: 2

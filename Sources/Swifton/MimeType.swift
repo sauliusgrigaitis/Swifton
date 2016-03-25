@@ -1,5 +1,6 @@
+// swiftlint:disable:next line_length
 // https://gist.githubusercontent.com/ngs/918b07f448977789cf69/raw/05bbb2103a41e0ed5d5579b3666d61c0891f91c0/MimeType.swift
-internal let DEFAULT_MIME_TYPE = "application/octet-stream"
+internal let defaultMimeType = "application/octet-stream"
 
 internal let mimeTypes = [
     "html": "text/html",
@@ -111,7 +112,7 @@ internal func MimeType(ext: String?) -> String {
     if ext != nil && mimeTypes.contains({ $0.0 == ext!.lowercaseString }) {
         return mimeTypes[ext!.lowercaseString]!
     }
-    return DEFAULT_MIME_TYPE
+    return defaultMimeType
 }
 
 extension String {

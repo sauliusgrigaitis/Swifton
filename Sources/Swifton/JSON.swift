@@ -1,4 +1,4 @@
-// http://stackoverflow.com/questions/35246542/serialize-stringany-to-json 
+// http://stackoverflow.com/questions/35246542/serialize-stringany-to-json
 
 protocol JSONSerializable {
     func toJSON() -> String?
@@ -24,7 +24,7 @@ extension Double : JSONSerializable {
 
 extension Array : JSONSerializable {
     func toJSON() -> String? {
-        var out : [String] = []
+        var out: [String] = []
         for element in self {
             if let json_element = element as? JSONSerializable, let string = json_element.toJSON() {
                 out.append(string)
@@ -33,12 +33,12 @@ extension Array : JSONSerializable {
             }
         }
         return "[\(out.joinWithSeparator(", "))]"
-    } 
+    }
 }
 
 extension Dictionary : JSONSerializable {
     func toJSON() -> String? {
-        var out : [String] = []
+        var out: [String] = []
         for (k, v) in self {
             if let json_element = v as? JSONSerializable, let string = json_element.toJSON() {
                 out.append("\"\(k)\": \(string)")

@@ -155,7 +155,7 @@
 		"_____Product_PathKit" /* libPathKit.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; path = libPathKit.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
 		"_____Product_Stencil" /* libStencil.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; path = libStencil.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
 		"_____Product_Swifton" /* libSwifton.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; path = libSwifton.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
-		"_____Product_SwiftonTestSuite" /* SwiftonTestSuite.xctest */ = {isa = PBXFileReference; lastKnownFileType = file; name = SwiftonTestSuite.xctest; path = Swifton.testsuite.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		"_____Product_SwiftonTestSuite" /* Swifton.testsuite.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; path = Swifton.testsuite.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		"_____Product_URITemplate" /* libURITemplate.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; path = libURITemplate.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -228,7 +228,7 @@
 		TestProducts_ /* Tests */ = {
 			isa = PBXGroup;
 			children = (
-				"_____Product_SwiftonTestSuite" /* SwiftonTestSuite.xctest */,
+				"_____Product_SwiftonTestSuite" /* Swifton.testsuite.xctest */,
 			);
 			name = Tests;
 			sourceTree = "<group>";
@@ -416,6 +416,7 @@
 			buildPhases = (
 				CompilePhase_PathKit /* Sources */,
 				"___LinkPhase_PathKit" /* Frameworks */,
+				1475A8671CA4A5F8004179B5 /* SwiftLint */,
 			);
 			buildRules = (
 			);
@@ -483,7 +484,7 @@
 			);
 			name = Swifton.testsuite;
 			productName = SwiftonTestSuite;
-			productReference = "_____Product_SwiftonTestSuite" /* SwiftonTestSuite.xctest */;
+			productReference = "_____Product_SwiftonTestSuite" /* Swifton.testsuite.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 		"______Target_URITemplate" /* URITemplate */ = {
@@ -532,6 +533,23 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		1475A8671CA4A5F8004179B5 /* SwiftLint */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = SwiftLint;
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if which swiftlint >/dev/null; then\n  swiftlint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		CompilePhase_Inquiline /* Sources */ = {
