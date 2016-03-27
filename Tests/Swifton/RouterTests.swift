@@ -96,7 +96,7 @@ class RouterTests: SwiftonTest {
     func testMimeType() {
         request.path = "/static.js"
         let staticFile = router.respond(request)
-        XTAssetrEqual(staticFile.contentType, "application/javascript; charset=utf8")
+        XTAssertEqual(staticFile.contentType, "application/javascript; charset=utf8")
     }
 
 //    TODO: Fix
