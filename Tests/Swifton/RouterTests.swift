@@ -93,6 +93,12 @@ class RouterTests: SwiftonTest {
         XCTAssertEqual(staticFile.body, "static\n")
     }
 
+    func testMimeType() {
+        request.path = "/static.js"
+        let staticFile = router.respond(request)
+        XTAssetrEqual(staticFile.contentType, "application/javascript; charset=utf8")
+    }
+
 //    TODO: Fix
 //    func testServeImage() {
 //        request.path = "/image.png"
