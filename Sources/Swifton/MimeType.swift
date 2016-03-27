@@ -120,3 +120,4 @@ extension String {
         return MimeType(self)
     }
 }
+
