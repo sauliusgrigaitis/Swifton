@@ -1,0 +1,861 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		14296BE91CA48DEE00F2CC48 /* libNest.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = "_____Product_Nest" /* libNest.dylib */; };
+		14296BEA1CA48DEE00F2CC48 /* libPathKit.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = "_____Product_PathKit" /* libPathKit.dylib */; };
+		14296BEB1CA48DEE00F2CC48 /* libNest.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = "_____Product_Nest" /* libNest.dylib */; };
+		14296BEC1CA48DEE00F2CC48 /* libPathKit.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = "_____Product_PathKit" /* libPathKit.dylib */; };
+		14296BED1CA48DEE00F2CC48 /* libURITemplate.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = "_____Product_URITemplate" /* libURITemplate.dylib */; };
+		14296BEE1CA48DEE00F2CC48 /* libInquiline.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = "_____Product_Inquiline" /* libInquiline.dylib */; };
+		14296BEF1CA48DEE00F2CC48 /* libStencil.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = "_____Product_Stencil" /* libStencil.dylib */; };
+		_LinkFileRef_Inquiline /* libInquiline.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = "_____Product_Inquiline" /* libInquiline.dylib */; };
+		_LinkFileRef_Nest /* libNest.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = "_____Product_Nest" /* libNest.dylib */; };
+		_LinkFileRef_PathKit /* libPathKit.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = "_____Product_PathKit" /* libPathKit.dylib */; };
+		_LinkFileRef_Stencil /* libStencil.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = "_____Product_Stencil" /* libStencil.dylib */; };
+		_LinkFileRef_Swifton /* libSwifton.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = "_____Product_Swifton" /* libSwifton.dylib */; };
+		_LinkFileRef_URITemplate /* libURITemplate.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = "_____Product_URITemplate" /* libURITemplate.dylib */; };
+		"__src_cc_ref_Packages/Inquiline-0.2.2/Sources/Request.swift" /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = "__PBXFileRef_Packages/Inquiline-0.2.2/Sources/Request.swift" /* Request.swift */; };
+		"__src_cc_ref_Packages/Inquiline-0.2.2/Sources/Response.swift" /* Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = "__PBXFileRef_Packages/Inquiline-0.2.2/Sources/Response.swift" /* Response.swift */; };
+		"__src_cc_ref_Packages/Inquiline-0.2.2/Sources/Status.swift" /* Status.swift in Sources */ = {isa = PBXBuildFile; fileRef = "__PBXFileRef_Packages/Inquiline-0.2.2/Sources/Status.swift" /* Status.swift */; };
+		"__src_cc_ref_Packages/Nest-0.2.1/Sources/Nest.swift" /* Nest.swift in Sources */ = {isa = PBXBuildFile; fileRef = "__PBXFileRef_Packages/Nest-0.2.1/Sources/Nest.swift" /* Nest.swift */; };
+		"__src_cc_ref_Packages/PathKit-0.6.1/Sources/PathKit.swift" /* PathKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = "__PBXFileRef_Packages/PathKit-0.6.1/Sources/PathKit.swift" /* PathKit.swift */; };
+		"__src_cc_ref_Packages/Stencil-0.5.3/Sources/Context.swift" /* Context.swift in Sources */ = {isa = PBXBuildFile; fileRef = "__PBXFileRef_Packages/Stencil-0.5.3/Sources/Context.swift" /* Context.swift */; };
+		"__src_cc_ref_Packages/Stencil-0.5.3/Sources/Filters.swift" /* Filters.swift in Sources */ = {isa = PBXBuildFile; fileRef = "__PBXFileRef_Packages/Stencil-0.5.3/Sources/Filters.swift" /* Filters.swift */; };
+		"__src_cc_ref_Packages/Stencil-0.5.3/Sources/ForTag.swift" /* ForTag.swift in Sources */ = {isa = PBXBuildFile; fileRef = "__PBXFileRef_Packages/Stencil-0.5.3/Sources/ForTag.swift" /* ForTag.swift */; };
+		"__src_cc_ref_Packages/Stencil-0.5.3/Sources/IfTag.swift" /* IfTag.swift in Sources */ = {isa = PBXBuildFile; fileRef = "__PBXFileRef_Packages/Stencil-0.5.3/Sources/IfTag.swift" /* IfTag.swift */; };
+		"__src_cc_ref_Packages/Stencil-0.5.3/Sources/Include.swift" /* Include.swift in Sources */ = {isa = PBXBuildFile; fileRef = "__PBXFileRef_Packages/Stencil-0.5.3/Sources/Include.swift" /* Include.swift */; };
+		"__src_cc_ref_Packages/Stencil-0.5.3/Sources/Inheritence.swift" /* Inheritence.swift in Sources */ = {isa = PBXBuildFile; fileRef = "__PBXFileRef_Packages/Stencil-0.5.3/Sources/Inheritence.swift" /* Inheritence.swift */; };
+		"__src_cc_ref_Packages/Stencil-0.5.3/Sources/Lexer.swift" /* Lexer.swift in Sources */ = {isa = PBXBuildFile; fileRef = "__PBXFileRef_Packages/Stencil-0.5.3/Sources/Lexer.swift" /* Lexer.swift */; };
+		"__src_cc_ref_Packages/Stencil-0.5.3/Sources/Namespace.swift" /* Namespace.swift in Sources */ = {isa = PBXBuildFile; fileRef = "__PBXFileRef_Packages/Stencil-0.5.3/Sources/Namespace.swift" /* Namespace.swift */; };
+		"__src_cc_ref_Packages/Stencil-0.5.3/Sources/Node.swift" /* Node.swift in Sources */ = {isa = PBXBuildFile; fileRef = "__PBXFileRef_Packages/Stencil-0.5.3/Sources/Node.swift" /* Node.swift */; };
+		"__src_cc_ref_Packages/Stencil-0.5.3/Sources/NowTag.swift" /* NowTag.swift in Sources */ = {isa = PBXBuildFile; fileRef = "__PBXFileRef_Packages/Stencil-0.5.3/Sources/NowTag.swift" /* NowTag.swift */; };
+		"__src_cc_ref_Packages/Stencil-0.5.3/Sources/Parser.swift" /* Parser.swift in Sources */ = {isa = PBXBuildFile; fileRef = "__PBXFileRef_Packages/Stencil-0.5.3/Sources/Parser.swift" /* Parser.swift */; };
+		"__src_cc_ref_Packages/Stencil-0.5.3/Sources/Template.swift" /* Template.swift in Sources */ = {isa = PBXBuildFile; fileRef = "__PBXFileRef_Packages/Stencil-0.5.3/Sources/Template.swift" /* Template.swift */; };
+		"__src_cc_ref_Packages/Stencil-0.5.3/Sources/TemplateLoader.swift" /* TemplateLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = "__PBXFileRef_Packages/Stencil-0.5.3/Sources/TemplateLoader.swift" /* TemplateLoader.swift */; };
+		"__src_cc_ref_Packages/Stencil-0.5.3/Sources/Tokenizer.swift" /* Tokenizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = "__PBXFileRef_Packages/Stencil-0.5.3/Sources/Tokenizer.swift" /* Tokenizer.swift */; };
+		"__src_cc_ref_Packages/Stencil-0.5.3/Sources/Variable.swift" /* Variable.swift in Sources */ = {isa = PBXBuildFile; fileRef = "__PBXFileRef_Packages/Stencil-0.5.3/Sources/Variable.swift" /* Variable.swift */; };
+		"__src_cc_ref_Packages/URITemplate-1.3.1/Sources/URITemplate.swift" /* URITemplate.swift in Sources */ = {isa = PBXBuildFile; fileRef = "__PBXFileRef_Packages/URITemplate-1.3.1/Sources/URITemplate.swift" /* URITemplate.swift */; };
+		__src_cc_ref_Sources/Swifton/Controller.swift /* Controller.swift in Sources */ = {isa = PBXBuildFile; fileRef = __PBXFileRef_Sources/Swifton/Controller.swift /* Controller.swift */; };
+		__src_cc_ref_Sources/Swifton/CookiesMiddleware.swift /* CookiesMiddleware.swift in Sources */ = {isa = PBXBuildFile; fileRef = __PBXFileRef_Sources/Swifton/CookiesMiddleware.swift /* CookiesMiddleware.swift */; };
+		__src_cc_ref_Sources/Swifton/Extensions.swift /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = __PBXFileRef_Sources/Swifton/Extensions.swift /* Extensions.swift */; };
+		__src_cc_ref_Sources/Swifton/HTMLRenderable.swift /* HTMLRenderable.swift in Sources */ = {isa = PBXBuildFile; fileRef = __PBXFileRef_Sources/Swifton/HTMLRenderable.swift /* HTMLRenderable.swift */; };
+		__src_cc_ref_Sources/Swifton/JSON.swift /* JSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = __PBXFileRef_Sources/Swifton/JSON.swift /* JSON.swift */; };
+		__src_cc_ref_Sources/Swifton/JSONRenderable.swift /* JSONRenderable.swift in Sources */ = {isa = PBXBuildFile; fileRef = __PBXFileRef_Sources/Swifton/JSONRenderable.swift /* JSONRenderable.swift */; };
+		__src_cc_ref_Sources/Swifton/MemoryModel.swift /* MemoryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = __PBXFileRef_Sources/Swifton/MemoryModel.swift /* MemoryModel.swift */; };
+		__src_cc_ref_Sources/Swifton/Middleware.swift /* Middleware.swift in Sources */ = {isa = PBXBuildFile; fileRef = __PBXFileRef_Sources/Swifton/Middleware.swift /* Middleware.swift */; };
+		__src_cc_ref_Sources/Swifton/MimeType.swift /* MimeType.swift in Sources */ = {isa = PBXBuildFile; fileRef = __PBXFileRef_Sources/Swifton/MimeType.swift /* MimeType.swift */; };
+		__src_cc_ref_Sources/Swifton/ParametersMiddleware.swift /* ParametersMiddleware.swift in Sources */ = {isa = PBXBuildFile; fileRef = __PBXFileRef_Sources/Swifton/ParametersMiddleware.swift /* ParametersMiddleware.swift */; };
+		__src_cc_ref_Sources/Swifton/Router.swift /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = __PBXFileRef_Sources/Swifton/Router.swift /* Router.swift */; };
+		__src_cc_ref_Sources/Swifton/SwiftonConfig.swift /* SwiftonConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = __PBXFileRef_Sources/Swifton/SwiftonConfig.swift /* SwiftonConfig.swift */; };
+		__src_cc_ref_Sources/Swifton/View.swift /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = __PBXFileRef_Sources/Swifton/View.swift /* View.swift */; };
+		__src_cc_ref_Tests/Swifton/ControllerTests.swift /* ControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = __PBXFileRef_Tests/Swifton/ControllerTests.swift /* ControllerTests.swift */; };
+		__src_cc_ref_Tests/Swifton/MemoryModelTests.swift /* MemoryModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = __PBXFileRef_Tests/Swifton/MemoryModelTests.swift /* MemoryModelTests.swift */; };
+		__src_cc_ref_Tests/Swifton/RouterTests.swift /* RouterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = __PBXFileRef_Tests/Swifton/RouterTests.swift /* RouterTests.swift */; };
+		__src_cc_ref_Tests/Swifton/SwiftonTest.swift /* SwiftonTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = __PBXFileRef_Tests/Swifton/SwiftonTest.swift /* SwiftonTest.swift */; };
+		__src_cc_ref_Tests/Swifton/TestApplicationController.swift /* TestApplicationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = __PBXFileRef_Tests/Swifton/TestApplicationController.swift /* TestApplicationController.swift */; };
+		__src_cc_ref_Tests/Swifton/TestModel.swift /* TestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = __PBXFileRef_Tests/Swifton/TestModel.swift /* TestModel.swift */; };
+		__src_cc_ref_Tests/Swifton/TestModelsController.swift /* TestModelsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = __PBXFileRef_Tests/Swifton/TestModelsController.swift /* TestModelsController.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		14296BF01CA48DEF00F2CC48 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = __RootObject_ /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = "______Target_PathKit";
+			remoteInfo = PathKit;
+		};
+		14296BF11CA48DEF00F2CC48 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = __RootObject_ /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = "______Target_Nest";
+			remoteInfo = Nest;
+		};
+		14296BF21CA48DEF00F2CC48 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = __RootObject_ /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = "______Target_URITemplate";
+			remoteInfo = URITemplate;
+		};
+		14296BF31CA48DEF00F2CC48 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = __RootObject_ /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = "______Target_Inquiline";
+			remoteInfo = Inquiline;
+		};
+		14296BF41CA48DEF00F2CC48 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = __RootObject_ /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = "______Target_Stencil";
+			remoteInfo = Stencil;
+		};
+		14296BF51CA48DEF00F2CC48 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = __RootObject_ /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = "______Target_Swifton";
+			remoteInfo = Swifton;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		"__PBXFileRef_Packages/Inquiline-0.2.2/Sources/Request.swift" /* Request.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Request.swift; sourceTree = "<group>"; };
+		"__PBXFileRef_Packages/Inquiline-0.2.2/Sources/Response.swift" /* Response.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Response.swift; sourceTree = "<group>"; };
+		"__PBXFileRef_Packages/Inquiline-0.2.2/Sources/Status.swift" /* Status.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Status.swift; sourceTree = "<group>"; };
+		"__PBXFileRef_Packages/Nest-0.2.1/Sources/Nest.swift" /* Nest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Nest.swift; sourceTree = "<group>"; };
+		"__PBXFileRef_Packages/PathKit-0.6.1/Sources/PathKit.swift" /* PathKit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PathKit.swift; sourceTree = "<group>"; };
+		"__PBXFileRef_Packages/Stencil-0.5.3/Sources/Context.swift" /* Context.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Context.swift; sourceTree = "<group>"; };
+		"__PBXFileRef_Packages/Stencil-0.5.3/Sources/Filters.swift" /* Filters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Filters.swift; sourceTree = "<group>"; };
+		"__PBXFileRef_Packages/Stencil-0.5.3/Sources/ForTag.swift" /* ForTag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForTag.swift; sourceTree = "<group>"; };
+		"__PBXFileRef_Packages/Stencil-0.5.3/Sources/IfTag.swift" /* IfTag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IfTag.swift; sourceTree = "<group>"; };
+		"__PBXFileRef_Packages/Stencil-0.5.3/Sources/Include.swift" /* Include.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Include.swift; sourceTree = "<group>"; };
+		"__PBXFileRef_Packages/Stencil-0.5.3/Sources/Inheritence.swift" /* Inheritence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Inheritence.swift; sourceTree = "<group>"; };
+		"__PBXFileRef_Packages/Stencil-0.5.3/Sources/Lexer.swift" /* Lexer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Lexer.swift; sourceTree = "<group>"; };
+		"__PBXFileRef_Packages/Stencil-0.5.3/Sources/Namespace.swift" /* Namespace.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Namespace.swift; sourceTree = "<group>"; };
+		"__PBXFileRef_Packages/Stencil-0.5.3/Sources/Node.swift" /* Node.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Node.swift; sourceTree = "<group>"; };
+		"__PBXFileRef_Packages/Stencil-0.5.3/Sources/NowTag.swift" /* NowTag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NowTag.swift; sourceTree = "<group>"; };
+		"__PBXFileRef_Packages/Stencil-0.5.3/Sources/Parser.swift" /* Parser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Parser.swift; sourceTree = "<group>"; };
+		"__PBXFileRef_Packages/Stencil-0.5.3/Sources/Template.swift" /* Template.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Template.swift; sourceTree = "<group>"; };
+		"__PBXFileRef_Packages/Stencil-0.5.3/Sources/TemplateLoader.swift" /* TemplateLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemplateLoader.swift; sourceTree = "<group>"; };
+		"__PBXFileRef_Packages/Stencil-0.5.3/Sources/Tokenizer.swift" /* Tokenizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tokenizer.swift; sourceTree = "<group>"; };
+		"__PBXFileRef_Packages/Stencil-0.5.3/Sources/Variable.swift" /* Variable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Variable.swift; sourceTree = "<group>"; };
+		"__PBXFileRef_Packages/URITemplate-1.3.1/Sources/URITemplate.swift" /* URITemplate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URITemplate.swift; sourceTree = "<group>"; };
+		__PBXFileRef_Sources/Swifton/Controller.swift /* Controller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Controller.swift; sourceTree = "<group>"; };
+		__PBXFileRef_Sources/Swifton/CookiesMiddleware.swift /* CookiesMiddleware.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CookiesMiddleware.swift; sourceTree = "<group>"; };
+		__PBXFileRef_Sources/Swifton/Extensions.swift /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		__PBXFileRef_Sources/Swifton/HTMLRenderable.swift /* HTMLRenderable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTMLRenderable.swift; sourceTree = "<group>"; };
+		__PBXFileRef_Sources/Swifton/JSON.swift /* JSON.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSON.swift; sourceTree = "<group>"; };
+		__PBXFileRef_Sources/Swifton/JSONRenderable.swift /* JSONRenderable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONRenderable.swift; sourceTree = "<group>"; };
+		__PBXFileRef_Sources/Swifton/MemoryModel.swift /* MemoryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryModel.swift; sourceTree = "<group>"; };
+		__PBXFileRef_Sources/Swifton/Middleware.swift /* Middleware.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Middleware.swift; sourceTree = "<group>"; };
+		__PBXFileRef_Sources/Swifton/MimeType.swift /* MimeType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MimeType.swift; sourceTree = "<group>"; };
+		__PBXFileRef_Sources/Swifton/ParametersMiddleware.swift /* ParametersMiddleware.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParametersMiddleware.swift; sourceTree = "<group>"; };
+		__PBXFileRef_Sources/Swifton/Router.swift /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
+		__PBXFileRef_Sources/Swifton/SwiftonConfig.swift /* SwiftonConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftonConfig.swift; sourceTree = "<group>"; };
+		__PBXFileRef_Sources/Swifton/View.swift /* View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
+		__PBXFileRef_Tests/Swifton/ControllerTests.swift /* ControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControllerTests.swift; sourceTree = "<group>"; };
+		__PBXFileRef_Tests/Swifton/MemoryModelTests.swift /* MemoryModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryModelTests.swift; sourceTree = "<group>"; };
+		__PBXFileRef_Tests/Swifton/RouterTests.swift /* RouterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouterTests.swift; sourceTree = "<group>"; };
+		__PBXFileRef_Tests/Swifton/SwiftonTest.swift /* SwiftonTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftonTest.swift; sourceTree = "<group>"; };
+		__PBXFileRef_Tests/Swifton/TestApplicationController.swift /* TestApplicationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestApplicationController.swift; sourceTree = "<group>"; };
+		__PBXFileRef_Tests/Swifton/TestModel.swift /* TestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestModel.swift; sourceTree = "<group>"; };
+		__PBXFileRef_Tests/Swifton/TestModelsController.swift /* TestModelsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestModelsController.swift; sourceTree = "<group>"; };
+		"_____Product_Inquiline" /* libInquiline.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; path = libInquiline.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
+		"_____Product_Nest" /* libNest.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; path = libNest.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
+		"_____Product_PathKit" /* libPathKit.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; path = libPathKit.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
+		"_____Product_Stencil" /* libStencil.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; path = libStencil.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
+		"_____Product_Swifton" /* libSwifton.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; path = libSwifton.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
+		"_____Product_SwiftonTestSuite" /* Swifton.testsuite.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; path = Swifton.testsuite.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		"_____Product_URITemplate" /* libURITemplate.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; path = libURITemplate.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		"___LinkPhase_Inquiline" /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 0;
+			files = (
+				_LinkFileRef_Nest /* libNest.dylib in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		"___LinkPhase_Nest" /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		"___LinkPhase_PathKit" /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		"___LinkPhase_Stencil" /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 0;
+			files = (
+				_LinkFileRef_PathKit /* libPathKit.dylib in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		"___LinkPhase_Swifton" /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 0;
+			files = (
+				14296BE91CA48DEE00F2CC48 /* libNest.dylib in Frameworks */,
+				14296BEA1CA48DEE00F2CC48 /* libPathKit.dylib in Frameworks */,
+				_LinkFileRef_URITemplate /* libURITemplate.dylib in Frameworks */,
+				_LinkFileRef_Inquiline /* libInquiline.dylib in Frameworks */,
+				_LinkFileRef_Stencil /* libStencil.dylib in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		"___LinkPhase_SwiftonTestSuite" /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 0;
+			files = (
+				14296BEB1CA48DEE00F2CC48 /* libNest.dylib in Frameworks */,
+				14296BEC1CA48DEE00F2CC48 /* libPathKit.dylib in Frameworks */,
+				14296BED1CA48DEE00F2CC48 /* libURITemplate.dylib in Frameworks */,
+				14296BEE1CA48DEE00F2CC48 /* libInquiline.dylib in Frameworks */,
+				14296BEF1CA48DEE00F2CC48 /* libStencil.dylib in Frameworks */,
+				_LinkFileRef_Swifton /* libSwifton.dylib in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		"___LinkPhase_URITemplate" /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		TestProducts_ /* Tests */ = {
+			isa = PBXGroup;
+			children = (
+				"_____Product_SwiftonTestSuite" /* Swifton.testsuite.xctest */,
+			);
+			name = Tests;
+			sourceTree = "<group>";
+		};
+		"___RootGroup_" = {
+			isa = PBXGroup;
+			children = (
+				"_____Sources_" /* Sources */,
+				"_______Tests_" /* Tests */,
+				"____Products_" /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		"____Products_" /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				TestProducts_ /* Tests */,
+				"_____Product_PathKit" /* libPathKit.dylib */,
+				"_____Product_Stencil" /* libStencil.dylib */,
+				"_____Product_Nest" /* libNest.dylib */,
+				"_____Product_Inquiline" /* libInquiline.dylib */,
+				"_____Product_URITemplate" /* libURITemplate.dylib */,
+				"_____Product_Swifton" /* libSwifton.dylib */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		"_____Sources_" /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				"_______Group_PathKit" /* PathKit */,
+				"_______Group_Stencil" /* Stencil */,
+				"_______Group_Nest" /* Nest */,
+				"_______Group_Inquiline" /* Inquiline */,
+				"_______Group_URITemplate" /* URITemplate */,
+				"_______Group_Swifton" /* Swifton */,
+			);
+			name = Sources;
+			sourceTree = "<group>";
+		};
+		"_______Group_Inquiline" /* Inquiline */ = {
+			isa = PBXGroup;
+			children = (
+				"__PBXFileRef_Packages/Inquiline-0.2.2/Sources/Request.swift" /* Request.swift */,
+				"__PBXFileRef_Packages/Inquiline-0.2.2/Sources/Response.swift" /* Response.swift */,
+				"__PBXFileRef_Packages/Inquiline-0.2.2/Sources/Status.swift" /* Status.swift */,
+			);
+			name = Inquiline;
+			path = "Packages/Inquiline-0.2.2/Sources";
+			sourceTree = "<group>";
+		};
+		"_______Group_Nest" /* Nest */ = {
+			isa = PBXGroup;
+			children = (
+				"__PBXFileRef_Packages/Nest-0.2.1/Sources/Nest.swift" /* Nest.swift */,
+			);
+			name = Nest;
+			path = "Packages/Nest-0.2.1/Sources";
+			sourceTree = "<group>";
+		};
+		"_______Group_PathKit" /* PathKit */ = {
+			isa = PBXGroup;
+			children = (
+				"__PBXFileRef_Packages/PathKit-0.6.1/Sources/PathKit.swift" /* PathKit.swift */,
+			);
+			name = PathKit;
+			path = "Packages/PathKit-0.6.1/Sources";
+			sourceTree = "<group>";
+		};
+		"_______Group_Stencil" /* Stencil */ = {
+			isa = PBXGroup;
+			children = (
+				"__PBXFileRef_Packages/Stencil-0.5.3/Sources/Context.swift" /* Context.swift */,
+				"__PBXFileRef_Packages/Stencil-0.5.3/Sources/Filters.swift" /* Filters.swift */,
+				"__PBXFileRef_Packages/Stencil-0.5.3/Sources/ForTag.swift" /* ForTag.swift */,
+				"__PBXFileRef_Packages/Stencil-0.5.3/Sources/IfTag.swift" /* IfTag.swift */,
+				"__PBXFileRef_Packages/Stencil-0.5.3/Sources/Include.swift" /* Include.swift */,
+				"__PBXFileRef_Packages/Stencil-0.5.3/Sources/Inheritence.swift" /* Inheritence.swift */,
+				"__PBXFileRef_Packages/Stencil-0.5.3/Sources/Lexer.swift" /* Lexer.swift */,
+				"__PBXFileRef_Packages/Stencil-0.5.3/Sources/Namespace.swift" /* Namespace.swift */,
+				"__PBXFileRef_Packages/Stencil-0.5.3/Sources/Node.swift" /* Node.swift */,
+				"__PBXFileRef_Packages/Stencil-0.5.3/Sources/NowTag.swift" /* NowTag.swift */,
+				"__PBXFileRef_Packages/Stencil-0.5.3/Sources/Parser.swift" /* Parser.swift */,
+				"__PBXFileRef_Packages/Stencil-0.5.3/Sources/Template.swift" /* Template.swift */,
+				"__PBXFileRef_Packages/Stencil-0.5.3/Sources/TemplateLoader.swift" /* TemplateLoader.swift */,
+				"__PBXFileRef_Packages/Stencil-0.5.3/Sources/Tokenizer.swift" /* Tokenizer.swift */,
+				"__PBXFileRef_Packages/Stencil-0.5.3/Sources/Variable.swift" /* Variable.swift */,
+			);
+			name = Stencil;
+			path = "Packages/Stencil-0.5.3/Sources";
+			sourceTree = "<group>";
+		};
+		"_______Group_Swifton" /* Swifton */ = {
+			isa = PBXGroup;
+			children = (
+				__PBXFileRef_Sources/Swifton/Controller.swift /* Controller.swift */,
+				__PBXFileRef_Sources/Swifton/CookiesMiddleware.swift /* CookiesMiddleware.swift */,
+				__PBXFileRef_Sources/Swifton/Extensions.swift /* Extensions.swift */,
+				__PBXFileRef_Sources/Swifton/HTMLRenderable.swift /* HTMLRenderable.swift */,
+				__PBXFileRef_Sources/Swifton/JSON.swift /* JSON.swift */,
+				__PBXFileRef_Sources/Swifton/JSONRenderable.swift /* JSONRenderable.swift */,
+				__PBXFileRef_Sources/Swifton/MemoryModel.swift /* MemoryModel.swift */,
+				__PBXFileRef_Sources/Swifton/Middleware.swift /* Middleware.swift */,
+				__PBXFileRef_Sources/Swifton/MimeType.swift /* MimeType.swift */,
+				__PBXFileRef_Sources/Swifton/ParametersMiddleware.swift /* ParametersMiddleware.swift */,
+				__PBXFileRef_Sources/Swifton/Router.swift /* Router.swift */,
+				__PBXFileRef_Sources/Swifton/SwiftonConfig.swift /* SwiftonConfig.swift */,
+				__PBXFileRef_Sources/Swifton/View.swift /* View.swift */,
+			);
+			name = Swifton;
+			path = Sources/Swifton;
+			sourceTree = "<group>";
+		};
+		"_______Group_SwiftonTestSuite" /* Swifton.testsuite */ = {
+			isa = PBXGroup;
+			children = (
+				__PBXFileRef_Tests/Swifton/ControllerTests.swift /* ControllerTests.swift */,
+				__PBXFileRef_Tests/Swifton/MemoryModelTests.swift /* MemoryModelTests.swift */,
+				__PBXFileRef_Tests/Swifton/RouterTests.swift /* RouterTests.swift */,
+				__PBXFileRef_Tests/Swifton/SwiftonTest.swift /* SwiftonTest.swift */,
+				__PBXFileRef_Tests/Swifton/TestApplicationController.swift /* TestApplicationController.swift */,
+				__PBXFileRef_Tests/Swifton/TestModel.swift /* TestModel.swift */,
+				__PBXFileRef_Tests/Swifton/TestModelsController.swift /* TestModelsController.swift */,
+			);
+			name = Swifton.testsuite;
+			path = Tests/Swifton;
+			sourceTree = "<group>";
+		};
+		"_______Group_URITemplate" /* URITemplate */ = {
+			isa = PBXGroup;
+			children = (
+				"__PBXFileRef_Packages/URITemplate-1.3.1/Sources/URITemplate.swift" /* URITemplate.swift */,
+			);
+			name = URITemplate;
+			path = "Packages/URITemplate-1.3.1/Sources";
+			sourceTree = "<group>";
+		};
+		"_______Tests_" /* Tests */ = {
+			isa = PBXGroup;
+			children = (
+				"_______Group_SwiftonTestSuite" /* Swifton.testsuite */,
+			);
+			name = Tests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		"______Target_Inquiline" /* Inquiline */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = "_______Confs_Inquiline" /* Build configuration list for PBXNativeTarget "Inquiline" */;
+			buildPhases = (
+				CompilePhase_Inquiline /* Sources */,
+				"___LinkPhase_Inquiline" /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				__Dependency_Nest /* PBXTargetDependency */,
+			);
+			name = Inquiline;
+			productName = Inquiline;
+			productReference = "_____Product_Inquiline" /* libInquiline.dylib */;
+			productType = "com.apple.product-type.library.dynamic";
+		};
+		"______Target_Nest" /* Nest */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = "_______Confs_Nest" /* Build configuration list for PBXNativeTarget "Nest" */;
+			buildPhases = (
+				CompilePhase_Nest /* Sources */,
+				"___LinkPhase_Nest" /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Nest;
+			productName = Nest;
+			productReference = "_____Product_Nest" /* libNest.dylib */;
+			productType = "com.apple.product-type.library.dynamic";
+		};
+		"______Target_PathKit" /* PathKit */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = "_______Confs_PathKit" /* Build configuration list for PBXNativeTarget "PathKit" */;
+			buildPhases = (
+				CompilePhase_PathKit /* Sources */,
+				"___LinkPhase_PathKit" /* Frameworks */,
+				1475A8671CA4A5F8004179B5 /* SwiftLint */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = PathKit;
+			productName = PathKit;
+			productReference = "_____Product_PathKit" /* libPathKit.dylib */;
+			productType = "com.apple.product-type.library.dynamic";
+		};
+		"______Target_Stencil" /* Stencil */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = "_______Confs_Stencil" /* Build configuration list for PBXNativeTarget "Stencil" */;
+			buildPhases = (
+				CompilePhase_Stencil /* Sources */,
+				"___LinkPhase_Stencil" /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				__Dependency_PathKit /* PBXTargetDependency */,
+			);
+			name = Stencil;
+			productName = Stencil;
+			productReference = "_____Product_Stencil" /* libStencil.dylib */;
+			productType = "com.apple.product-type.library.dynamic";
+		};
+		"______Target_Swifton" /* Swifton */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = "_______Confs_Swifton" /* Build configuration list for PBXNativeTarget "Swifton" */;
+			buildPhases = (
+				CompilePhase_Swifton /* Sources */,
+				"___LinkPhase_Swifton" /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				__Dependency_Nest /* PBXTargetDependency */,
+				__Dependency_PathKit /* PBXTargetDependency */,
+				__Dependency_URITemplate /* PBXTargetDependency */,
+				__Dependency_Inquiline /* PBXTargetDependency */,
+				__Dependency_Stencil /* PBXTargetDependency */,
+			);
+			name = Swifton;
+			productName = Swifton;
+			productReference = "_____Product_Swifton" /* libSwifton.dylib */;
+			productType = "com.apple.product-type.library.dynamic";
+		};
+		"______Target_SwiftonTestSuite" /* Swifton.testsuite */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = "_______Confs_SwiftonTestSuite" /* Build configuration list for PBXNativeTarget "Swifton.testsuite" */;
+			buildPhases = (
+				CompilePhase_SwiftonTestSuite /* Sources */,
+				"___LinkPhase_SwiftonTestSuite" /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				__Dependency_Nest /* PBXTargetDependency */,
+				__Dependency_PathKit /* PBXTargetDependency */,
+				__Dependency_URITemplate /* PBXTargetDependency */,
+				__Dependency_Inquiline /* PBXTargetDependency */,
+				__Dependency_Stencil /* PBXTargetDependency */,
+				__Dependency_Swifton /* PBXTargetDependency */,
+			);
+			name = Swifton.testsuite;
+			productName = SwiftonTestSuite;
+			productReference = "_____Product_SwiftonTestSuite" /* Swifton.testsuite.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		"______Target_URITemplate" /* URITemplate */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = "_______Confs_URITemplate" /* Build configuration list for PBXNativeTarget "URITemplate" */;
+			buildPhases = (
+				CompilePhase_URITemplate /* Sources */,
+				"___LinkPhase_URITemplate" /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = URITemplate;
+			productName = URITemplate;
+			productReference = "_____Product_URITemplate" /* libURITemplate.dylib */;
+			productType = "com.apple.product-type.library.dynamic";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		__RootObject_ /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 9999;
+			};
+			buildConfigurationList = "___RootConfs_" /* Build configuration list for PBXProject "Swifton" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = "___RootGroup_";
+			productRefGroup = "____Products_" /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				"______Target_PathKit" /* PathKit */,
+				"______Target_Stencil" /* Stencil */,
+				"______Target_Nest" /* Nest */,
+				"______Target_Inquiline" /* Inquiline */,
+				"______Target_URITemplate" /* URITemplate */,
+				"______Target_Swifton" /* Swifton */,
+				"______Target_SwiftonTestSuite" /* Swifton.testsuite */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		1475A8671CA4A5F8004179B5 /* SwiftLint */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = SwiftLint;
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if which swiftlint >/dev/null; then\n  swiftlint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		CompilePhase_Inquiline /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 0;
+			files = (
+				"__src_cc_ref_Packages/Inquiline-0.2.2/Sources/Request.swift" /* Request.swift in Sources */,
+				"__src_cc_ref_Packages/Inquiline-0.2.2/Sources/Response.swift" /* Response.swift in Sources */,
+				"__src_cc_ref_Packages/Inquiline-0.2.2/Sources/Status.swift" /* Status.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CompilePhase_Nest /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 0;
+			files = (
+				"__src_cc_ref_Packages/Nest-0.2.1/Sources/Nest.swift" /* Nest.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CompilePhase_PathKit /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 0;
+			files = (
+				"__src_cc_ref_Packages/PathKit-0.6.1/Sources/PathKit.swift" /* PathKit.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CompilePhase_Stencil /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 0;
+			files = (
+				"__src_cc_ref_Packages/Stencil-0.5.3/Sources/Context.swift" /* Context.swift in Sources */,
+				"__src_cc_ref_Packages/Stencil-0.5.3/Sources/Filters.swift" /* Filters.swift in Sources */,
+				"__src_cc_ref_Packages/Stencil-0.5.3/Sources/ForTag.swift" /* ForTag.swift in Sources */,
+				"__src_cc_ref_Packages/Stencil-0.5.3/Sources/IfTag.swift" /* IfTag.swift in Sources */,
+				"__src_cc_ref_Packages/Stencil-0.5.3/Sources/Include.swift" /* Include.swift in Sources */,
+				"__src_cc_ref_Packages/Stencil-0.5.3/Sources/Inheritence.swift" /* Inheritence.swift in Sources */,
+				"__src_cc_ref_Packages/Stencil-0.5.3/Sources/Lexer.swift" /* Lexer.swift in Sources */,
+				"__src_cc_ref_Packages/Stencil-0.5.3/Sources/Namespace.swift" /* Namespace.swift in Sources */,
+				"__src_cc_ref_Packages/Stencil-0.5.3/Sources/Node.swift" /* Node.swift in Sources */,
+				"__src_cc_ref_Packages/Stencil-0.5.3/Sources/NowTag.swift" /* NowTag.swift in Sources */,
+				"__src_cc_ref_Packages/Stencil-0.5.3/Sources/Parser.swift" /* Parser.swift in Sources */,
+				"__src_cc_ref_Packages/Stencil-0.5.3/Sources/Template.swift" /* Template.swift in Sources */,
+				"__src_cc_ref_Packages/Stencil-0.5.3/Sources/TemplateLoader.swift" /* TemplateLoader.swift in Sources */,
+				"__src_cc_ref_Packages/Stencil-0.5.3/Sources/Tokenizer.swift" /* Tokenizer.swift in Sources */,
+				"__src_cc_ref_Packages/Stencil-0.5.3/Sources/Variable.swift" /* Variable.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CompilePhase_Swifton /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 0;
+			files = (
+				__src_cc_ref_Sources/Swifton/Controller.swift /* Controller.swift in Sources */,
+				__src_cc_ref_Sources/Swifton/CookiesMiddleware.swift /* CookiesMiddleware.swift in Sources */,
+				__src_cc_ref_Sources/Swifton/Extensions.swift /* Extensions.swift in Sources */,
+				__src_cc_ref_Sources/Swifton/HTMLRenderable.swift /* HTMLRenderable.swift in Sources */,
+				__src_cc_ref_Sources/Swifton/JSON.swift /* JSON.swift in Sources */,
+				__src_cc_ref_Sources/Swifton/JSONRenderable.swift /* JSONRenderable.swift in Sources */,
+				__src_cc_ref_Sources/Swifton/MemoryModel.swift /* MemoryModel.swift in Sources */,
+				__src_cc_ref_Sources/Swifton/Middleware.swift /* Middleware.swift in Sources */,
+				__src_cc_ref_Sources/Swifton/MimeType.swift /* MimeType.swift in Sources */,
+				__src_cc_ref_Sources/Swifton/ParametersMiddleware.swift /* ParametersMiddleware.swift in Sources */,
+				__src_cc_ref_Sources/Swifton/Router.swift /* Router.swift in Sources */,
+				__src_cc_ref_Sources/Swifton/SwiftonConfig.swift /* SwiftonConfig.swift in Sources */,
+				__src_cc_ref_Sources/Swifton/View.swift /* View.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CompilePhase_SwiftonTestSuite /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 0;
+			files = (
+				__src_cc_ref_Tests/Swifton/ControllerTests.swift /* ControllerTests.swift in Sources */,
+				__src_cc_ref_Tests/Swifton/MemoryModelTests.swift /* MemoryModelTests.swift in Sources */,
+				__src_cc_ref_Tests/Swifton/RouterTests.swift /* RouterTests.swift in Sources */,
+				__src_cc_ref_Tests/Swifton/SwiftonTest.swift /* SwiftonTest.swift in Sources */,
+				__src_cc_ref_Tests/Swifton/TestApplicationController.swift /* TestApplicationController.swift in Sources */,
+				__src_cc_ref_Tests/Swifton/TestModel.swift /* TestModel.swift in Sources */,
+				__src_cc_ref_Tests/Swifton/TestModelsController.swift /* TestModelsController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CompilePhase_URITemplate /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 0;
+			files = (
+				"__src_cc_ref_Packages/URITemplate-1.3.1/Sources/URITemplate.swift" /* URITemplate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		__Dependency_Inquiline /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = "______Target_Inquiline" /* Inquiline */;
+			targetProxy = 14296BF31CA48DEF00F2CC48 /* PBXContainerItemProxy */;
+		};
+		__Dependency_Nest /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = "______Target_Nest" /* Nest */;
+			targetProxy = 14296BF11CA48DEF00F2CC48 /* PBXContainerItemProxy */;
+		};
+		__Dependency_PathKit /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = "______Target_PathKit" /* PathKit */;
+			targetProxy = 14296BF01CA48DEF00F2CC48 /* PBXContainerItemProxy */;
+		};
+		__Dependency_Stencil /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = "______Target_Stencil" /* Stencil */;
+			targetProxy = 14296BF41CA48DEF00F2CC48 /* PBXContainerItemProxy */;
+		};
+		__Dependency_Swifton /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = "______Target_Swifton" /* Swifton */;
+			targetProxy = 14296BF51CA48DEF00F2CC48 /* PBXContainerItemProxy */;
+		};
+		__Dependency_URITemplate /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = "______Target_URITemplate" /* URITemplate */;
+			targetProxy = 14296BF21CA48DEF00F2CC48 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		"___DebugConf_Inquiline" /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				DYLIB_INSTALL_NAME_BASE = "$(CONFIGURATION_BUILD_DIR)";
+				ENABLE_TESTABILITY = YES;
+				LD_RUNPATH_SEARCH_PATHS = "/Library/Developer/Toolchains/swift-DEVELOPMENT-SNAPSHOT-2016-03-16-a.xctoolchain/usr/lib/swift/macosx";
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				OTHER_SWIFT_FLAGS = "-DXcode";
+				PRODUCT_MODULE_NAME = Inquiline;
+				PRODUCT_NAME = "lib$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		"___DebugConf_Nest" /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				DYLIB_INSTALL_NAME_BASE = "$(CONFIGURATION_BUILD_DIR)";
+				ENABLE_TESTABILITY = YES;
+				LD_RUNPATH_SEARCH_PATHS = "/Library/Developer/Toolchains/swift-DEVELOPMENT-SNAPSHOT-2016-03-16-a.xctoolchain/usr/lib/swift/macosx";
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				OTHER_SWIFT_FLAGS = "-DXcode";
+				PRODUCT_MODULE_NAME = Nest;
+				PRODUCT_NAME = "lib$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		"___DebugConf_PathKit" /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				DYLIB_INSTALL_NAME_BASE = "$(CONFIGURATION_BUILD_DIR)";
+				ENABLE_TESTABILITY = YES;
+				LD_RUNPATH_SEARCH_PATHS = "/Library/Developer/Toolchains/swift-DEVELOPMENT-SNAPSHOT-2016-03-16-a.xctoolchain/usr/lib/swift/macosx";
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				OTHER_SWIFT_FLAGS = "-DXcode";
+				PRODUCT_MODULE_NAME = PathKit;
+				PRODUCT_NAME = "lib$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		"___DebugConf_Stencil" /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				DYLIB_INSTALL_NAME_BASE = "$(CONFIGURATION_BUILD_DIR)";
+				ENABLE_TESTABILITY = YES;
+				LD_RUNPATH_SEARCH_PATHS = "/Library/Developer/Toolchains/swift-DEVELOPMENT-SNAPSHOT-2016-03-16-a.xctoolchain/usr/lib/swift/macosx";
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				OTHER_SWIFT_FLAGS = "-DXcode";
+				PRODUCT_MODULE_NAME = Stencil;
+				PRODUCT_NAME = "lib$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		"___DebugConf_Swifton" /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				DYLIB_INSTALL_NAME_BASE = "$(CONFIGURATION_BUILD_DIR)";
+				ENABLE_TESTABILITY = YES;
+				LD_RUNPATH_SEARCH_PATHS = "/Library/Developer/Toolchains/swift-DEVELOPMENT-SNAPSHOT-2016-03-16-a.xctoolchain/usr/lib/swift/macosx";
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				OTHER_SWIFT_FLAGS = "-DXcode";
+				PRODUCT_MODULE_NAME = Swifton;
+				PRODUCT_NAME = "lib$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		"___DebugConf_SwiftonTestSuite" /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
+				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				OTHER_SWIFT_FLAGS = "-DXcode";
+				PRODUCT_MODULE_NAME = SwiftonTestSuite;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		"___DebugConf_URITemplate" /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				DYLIB_INSTALL_NAME_BASE = "$(CONFIGURATION_BUILD_DIR)";
+				ENABLE_TESTABILITY = YES;
+				LD_RUNPATH_SEARCH_PATHS = "/Library/Developer/Toolchains/swift-DEVELOPMENT-SNAPSHOT-2016-03-16-a.xctoolchain/usr/lib/swift/macosx";
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				OTHER_SWIFT_FLAGS = "-DXcode";
+				PRODUCT_MODULE_NAME = URITemplate;
+				PRODUCT_NAME = "lib$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		"_______Debug_" /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+			};
+			name = Debug;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		"___RootConfs_" /* Build configuration list for PBXProject "Swifton" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				"_______Debug_" /* Debug */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		"_______Confs_Inquiline" /* Build configuration list for PBXNativeTarget "Inquiline" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				"___DebugConf_Inquiline" /* Debug */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		"_______Confs_Nest" /* Build configuration list for PBXNativeTarget "Nest" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				"___DebugConf_Nest" /* Debug */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		"_______Confs_PathKit" /* Build configuration list for PBXNativeTarget "PathKit" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				"___DebugConf_PathKit" /* Debug */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		"_______Confs_Stencil" /* Build configuration list for PBXNativeTarget "Stencil" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				"___DebugConf_Stencil" /* Debug */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		"_______Confs_Swifton" /* Build configuration list for PBXNativeTarget "Swifton" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				"___DebugConf_Swifton" /* Debug */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		"_______Confs_SwiftonTestSuite" /* Build configuration list for PBXNativeTarget "Swifton.testsuite" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				"___DebugConf_SwiftonTestSuite" /* Debug */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		"_______Confs_URITemplate" /* Build configuration list for PBXNativeTarget "URITemplate" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				"___DebugConf_URITemplate" /* Debug */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = __RootObject_ /* Project object */;
+}

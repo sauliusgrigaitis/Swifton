@@ -11,6 +11,7 @@ A Ruby on Rails inspired Web Framework for Swift that runs on Linux and OS X.
 ![Mac OS X](https://img.shields.io/badge/os-Mac%20OS%20X-green.svg?style=flat)
 ![Swift 2 compatible](https://img.shields.io/badge/swift2-compatible-4BC51D.svg?style=flat)
 [![MIT license](http://img.shields.io/badge/license-MIT-brightgreen.svg)](http://opensource.org/licenses/MIT)
+[![codebeat badge](https://codebeat.co/badges/c5246f1f-d1cd-4424-b9ec-9340a175a844)](https://codebeat.co/projects/github-com-necolt-swifton)
 
 ## Getting Started
 
@@ -69,54 +70,54 @@ serve { request in
 
 ## Controllers 
 
-A controller inherits from ApplicationController class, which inherits from Controller class. Action is a closure that accepts Request object and returns Response object. ```beforeAction``` and ```afterAction``` allows to register filters before and after action is executed. 
+A controller inherits from ApplicationController class, which inherits from Controller class. Action is a closure that accepts Request object and returns Response object. 
 
 ```swift
 class TodosController: ApplicationController { 
     // shared todo variable used to pass value between setTodo filter and actions
     var todo: Todo?    
-    override init() { super.init()
+    override func controller() {
 
-    // sets before filter setTodo only for specified actions 
+    // sets before filter setTodo only for specified actions.
     beforeAction("setTodo", ["only": ["show", "edit", "update", "destroy"]])
 
     // render all Todo instances with Index template (in Views/Todos/Index.html.stencil)
     action("index") { request in
         let todos = ["todos": Todo.allAttributes()]
-        return self.render("Todos/Index", todos)
+        return render("Todos/Index", todos)
     }
 
     // render Todo instance that was set in before filter
     action("show") { request in
-        return self.render("Todos/Show", self.todo)
+        return render("Todos/Show", self.todo)
     }
 
     // render static New template
     action("new") { request in
-        return self.render("Todos/New")
+        return render("Todos/New")
     }
 
     // render Todo instance's edit form
     action("edit") { request in
-        return self.render("Todos/Edit", self.todo)
+        return render("Todos/Edit", self.todo)
     } 
 
     // create new Todo instance and redirect to list of Todos 
     action("create") { request in
         Todo.create(request.params)
-        return self.redirectTo("/todos")
+        return redirectTo("/todos")
     }
     
     // update Todo instance and redirect to updated Todo instance
     action("update") { request in
         self.todo!.update(request.params)
-        return self.redirectTo("/todos/\(self.todo!.id)")
+        return redirectTo("/todos/\(self.todo!.id)")
     }
 
     // destroy Todo instance
     action("destroy") { request in
         Todo.destroy(self.todo)
-        return self.redirectTo("/todos")
+        return redirectTo("/todos")
     }
 
     // set todo shared variable to actions can use it
@@ -131,19 +132,34 @@ class TodosController: ApplicationController {
 }}
 
 ```
+### Controller Responders
 
 ```respondTo``` allows to define multiple responders based client ```Accept``` header:
 
 ```swift 
 ...
 action("show") { request in
-    return self.respondTo(request, [
-        "html": { self.render("Todos/Show", self.todo) },
-        "json": { self.renderJSON(self.todo) }
+    return respondTo(request, [
+        "html": { render("Todos/Show", self.todo) },
+        "json": { renderJSON(self.todo) }
     ])
 }
 ...
 
+```
+
+### Controller Filters
+
+Swifton Controllers support ```beforeAction``` and ```afterAction``` filters, which run filters before or after action correspodingly. Filter is a closure that returns ```Response?```. Controller proceeds execution only if filter returns ```self.next``` (which is actually ```nil```), otherwise it returns ```Response``` object and doesn't proceed execution of other filters and action.  
+
+```swift
+filter("setTodo") { request in
+    // Redirect to "/todos" list if Todo instance is not found
+    guard let t = Todo.find(request.params["id"]) else { return self.redirectTo("/todos") }
+    self.todo = t as? Todo
+    // Run next filter or action
+    return self.next
+}
 ```
 
 ## Models
@@ -203,9 +219,9 @@ Static assets (JavaScript, CSS, images etc.) are loaded from ```Public``` direct
 
 ```swift
 action("show") { request in
-    return self.respondTo(request, [
-        "html": { self.render("Todos/Show", self.todo) },
-        "json": { self.renderJSON(self.todo) }
+    return respondTo(request, [
+        "html": { render("Todos/Show", self.todo) },
+        "json": { renderJSON(self.todo) }
     ])
 }
 ```
@@ -274,4 +290,7 @@ Click the button below to automatically set up this example to run on your own H
 
 ### Docker 
 
-Example [TodoApp](https://github.com/necolt/Swifton-TodoApp) can be deployed on Docker using the [docker-swift](https://github.com/swiftdocker/docker-swift).
+Swifton can be deployed with Docker. Some examples how to deploy it with Docker:
+* [TodoApp](https://github.com/necolt/Swifton-TodoApp) on EC2 Container Services (ECS) [example](http://ngs.io/2016/03/04/swift-webapp-on-ecs/)
+* Docker Container for the Apple's Swift programming language - [docker-swift](https://github.com/swiftdocker/docker-swift).
+

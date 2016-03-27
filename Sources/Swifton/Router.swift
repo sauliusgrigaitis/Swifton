@@ -4,7 +4,7 @@ import Foundation
 import PathKit
 import URITemplate
 
-public enum Method:String {
+public enum Method: String {
     case DELETE = "DELETE"
     case GET = "GET"
     case HEAD = "HEAD"
@@ -19,7 +19,7 @@ public class Router {
     typealias Route = (URITemplate, Method, Action)
 
     var routes = [Route]()
-    
+
     public init() {}
 
     public var notFound: Nest.Application = { request in
@@ -74,13 +74,17 @@ public class Router {
     }
 
     public func respond(requestType: RequestType) -> ResponseType {
-         let request = requestType as? Request ?? Request(method: requestType.method, path: requestType.path, headers: requestType.headers, body: requestType.body)
-        return ParametersMiddleware().call(request, resolveRoute)
+        let request = requestType as? Request ?? Request(method: requestType.method, path: requestType.path,
+            headers: requestType.headers, body: requestType.body)
+
+        return ParametersMiddleware().call(request) {
+          CookiesMiddleware().call($0, self.resolveRoute)
+        }
     }
 
     public func resolveRoute(request: Request) -> Response {
         var newRequest = request
-                
+
         for (template, method, handler) in routes {
             if newRequest.method == method.rawValue {
                 if let variables = template.extract(newRequest.path) {
@@ -107,7 +111,7 @@ public class Router {
                 if filePath.exists {
                     if filePath.isReadable {
                         do {
-                            let contents:NSData? = try filePath.read()
+                            let contents: NSData? = try filePath.read()
                             if let body = String(data:contents!, encoding: NSUTF8StringEncoding) {
                                 return Response(.Ok, contentType: (filePath.`extension` ?? "").mimeType() + "; charset=utf8", body: body)
                             }
@@ -117,9 +121,9 @@ public class Router {
                     } else {
                         return permissionDenied(request)
                     }
-                } 
+                }
             }
-        } 
+        }
         return nil
     }
 }
