@@ -1,9 +1,9 @@
 import Swifton
 
-class TestModelsController: TestApplicationController { 
-    var testModel: TestModel?    
+class TestModelsController: TestApplicationController {
+    var testModel: TestModel?
 
-    override func controller() { 
+    override func controller() {
 
     beforeAction("setTestModel", ["only": ["show", "edit", "update", "destroy"]])
     beforeAction("reset", ["only": ["show"]])
@@ -27,7 +27,7 @@ class TestModelsController: TestApplicationController {
 
     action("edit") { request in
         return render("TestModels/Edit", self.testModel)
-    } 
+    }
     action("create") { request in
         TestModel.create(request.params)
         return redirectTo("/testModels")
@@ -44,13 +44,13 @@ class TestModelsController: TestApplicationController {
     }
 
     filter("setTestModel") { request in
-        guard let t = TestModel.find(request.params["id"]) else { return redirectTo("/testModels") } 
+        guard let t = TestModel.find(request.params["id"]) else { return redirectTo("/testModels") }
         self.testModel = t as? TestModel
         return self.next
     }
 
     filter("crash") { request in
-        let crash:String? = nil
+        let crash: String? = nil
         let _ = crash!
         return self.next
     }

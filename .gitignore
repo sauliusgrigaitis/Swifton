@@ -1,2 +1,8 @@
 .build/
 Packages/
+.DS_Store
+
+## Xcode
+xcuserdata/
+*.xcscmblueprint
+

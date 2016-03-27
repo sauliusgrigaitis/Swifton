@@ -1,8 +1,8 @@
 public class MemoryModel: HTMLRenderable, JSONRenderable, Equatable {
     static var id = 1
-    public static var all = [MemoryModel]() 
+    public static var all = [MemoryModel]()
     public var attributes = [String: Any]()
-    public var id:Int {
+    public var id: Int {
         get {
             return attributes["id"] as! Int
         }
@@ -12,7 +12,7 @@ public class MemoryModel: HTMLRenderable, JSONRenderable, Equatable {
     }
 
     required public init(_ attributes: [String: Any]) {
-        self.attributes = attributes 
+        self.attributes = attributes
         self.attributes["id"] = self.dynamicType.id
         self.dynamicType.id += 1
     }
@@ -24,20 +24,11 @@ public class MemoryModel: HTMLRenderable, JSONRenderable, Equatable {
         set(newValue) {
             attributes[name] = newValue
         }
-    } 
+    }
 
     public static func create(attributes: [String: String]) -> Self {
-        var attrs = [String: Any]()
-        for (key, value) in attributes {
-            if let integer:Int = Int(value) {
-                attrs[key] = integer
-            } else if let double:Double = Double(value) {
-                attrs[key] = double
-            } else {
-                attrs[key] = value
-            }
-        }
-        let new = self.init(attrs)
+        let resolvedAttributes = self.resolveAttributes(attributes)
+        let new = self.init(resolvedAttributes)
         all.append(new)
         return new
     }
@@ -49,7 +40,7 @@ public class MemoryModel: HTMLRenderable, JSONRenderable, Equatable {
     }
 
     public static func find(id: Int?) -> MemoryModel? {
-        return all.filter{ $0.id == id }.first 
+        return all.filter { $0.id == id }.first
     }
 
     public static func destroy(model: MemoryModel?) {
@@ -61,7 +52,7 @@ public class MemoryModel: HTMLRenderable, JSONRenderable, Equatable {
     public static func allAttributes() -> Any {
         var items = [Any]()
         for model in all {
-            var attrs = model.attributes 
+            var attrs = model.attributes
             attrs["id"] = String(model.id)
             items.append(attrs as Any)
         }
@@ -69,35 +60,38 @@ public class MemoryModel: HTMLRenderable, JSONRenderable, Equatable {
     }
 
     public static func reset() {
-        all = [MemoryModel]() 
+        all = [MemoryModel]()
         id = 1
     }
 
     public func update(attributes: [String: String]) {
+        self.attributes = MemoryModel.resolveAttributes(attributes)
+    }
+
+    static func resolveAttributes(attributes: [String: String]) -> [String: Any] {
         var attrs = [String: Any]()
         for (key, value) in attributes {
-            if let integer:Int = Int(value) {
+            if let integer: Int = Int(value) {
                 attrs[key] = integer
-            } else if let double:Double = Double(value) {
+            } else if let double: Double = Double(value) {
                 attrs[key] = double
             } else {
               attrs[key] = value
             }
         }
-        self.attributes = attrs
+        return attrs
     }
-  
+
     public func renderableAttributes() -> [String: Any] {
-        return self.attributes  
+        return self.attributes
     }
 
     public func renderableJSONAttributes() -> [String: Any] {
-        return self.attributes  
+        return self.attributes
     }
 
 }
 
-public func ==(lhs: MemoryModel, rhs: MemoryModel) -> Bool {
+public func == (lhs: MemoryModel, rhs: MemoryModel) -> Bool {
     return lhs.id == rhs.id
 }
-
