@@ -23,7 +23,7 @@ struct StencilView {
         let templateName = templatePath.removeLast()
 
         let appPath = Path(SwiftonConfig.viewsDirectory)
-        let paths = [appPath + templatePath.joinWithSeparator("/")]
+        let paths = [appPath + templatePath.joined(separator: "/")]
         let templateLoader = TemplateLoader(paths: paths)
         self.template = templateLoader.loadTemplate(templateName + ".html.stencil")
     }
