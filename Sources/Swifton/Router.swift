@@ -1,8 +1,8 @@
 import Inquiline
 import Nest
 import Foundation
-import PathKit
 import URITemplate
+import PathKit
 
 public enum Method: String {
     case DELETE = "DELETE"

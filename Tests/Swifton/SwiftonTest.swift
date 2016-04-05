@@ -8,15 +8,9 @@ class SwiftonTest: XCTestCase {
         return []
     }
 
-    #if os(Linux)
-        func setUp() {
-            doSetUp()
-        }
-    #else
-        override func setUp() {
-            doSetUp()
-        }
-    #endif
+    override func setUp() {
+        doSetUp()
+    }
 
     func doSetUp() {
         SwiftonConfig.viewsDirectory = (Path(#file).parent() + "Fixtures/Views").description

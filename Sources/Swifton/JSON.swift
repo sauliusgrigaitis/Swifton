@@ -32,7 +32,7 @@ extension Array : JSONSerializable {
                 return nil
             }
         }
-        return "[\(out.joinWithSeparator(", "))]"
+        return "[\(out.joined(separator: ", "))]"
     }
 }
 
@@ -46,6 +46,6 @@ extension Dictionary : JSONSerializable {
                 return nil
             }
         }
-        return "{\(out.joinWithSeparator(", "))}"
+        return "{\(out.joined(separator: ", "))}"
     }
 }

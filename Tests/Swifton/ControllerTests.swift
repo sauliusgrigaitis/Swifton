@@ -57,10 +57,10 @@ class ControllerTests: SwiftonTest {
 
         let recordsJson: [String] = TestModel.all.map { record in
             let attributes = record.attributes.map { "\"\($0)\": \"\($1)\"" }
-            return "{\(attributes.joinWithSeparator(", "))}"
+            return "{\(attributes.joined(separator: ", "))}"
         }
 
-        XCTAssertEqual(rendered.body, "{\"testModels\": [\(recordsJson.joinWithSeparator(", "))]}")
+        XCTAssertEqual(rendered.body, "{\"testModels\": [\(recordsJson.joined(separator: ", "))]}")
     }
 
     func testRenderHtmlSingleModel() {
