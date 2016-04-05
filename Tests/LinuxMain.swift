@@ -1,5 +1,4 @@
 import XCTest
-@testable import Swiftontest
 
 XCTMain([
     MemoryModelTests(),
