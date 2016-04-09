@@ -1,7 +1,7 @@
 import XCTest
 
 XCTMain([
-    MemoryModelTests(),
-    ControllerTests(),
-    RouterTests()
+    testCase(MemoryModelTests.allTests),
+    testCase(ControllerTests.allTests),
+    testCase(RouterTests.allTests)
 ])
