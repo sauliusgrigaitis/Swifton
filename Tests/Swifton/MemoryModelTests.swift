@@ -1,11 +1,11 @@
-import XCTest
 import Swifton
+import XCTest
 
-class MemoryModelTests: SwiftonTest {
+class MemoryModelTests: XCTestCase {
 
     var record: TestModel!
 
-    override var allTests: [(String, () throws -> Void)] {
+    static var allTests: [(String, MemoryModelTests -> () throws -> Void)] {
         return [
             ("testAddRecordToCollection", testAddRecordToCollection),
             ("testFindRecordByStringId", testFindRecordByStringId),
@@ -16,9 +16,7 @@ class MemoryModelTests: SwiftonTest {
         ]
     }
 
-    override func doSetUp() {
-        super.doSetUp()
-
+    override func setUp() {
         TestModel.all = [MemoryModel]()
         record = TestModel.create(["name": "Saulius", "surname": "Grigaitis"])
     }

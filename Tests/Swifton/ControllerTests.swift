@@ -1,14 +1,15 @@
-import XCTest
 import Swifton
 import Inquiline
+import PathKit
+import XCTest
 
-class ControllerTests: SwiftonTest {
+class ControllerTests: XCTestCase {
 
     let controller = TestModelsController()
     var request: Request!
     var postRequest: Request!
 
-    override var allTests: [(String, () throws -> Void)] {
+    static var allTests: [(String, ControllerTests -> () throws -> Void)] {
         return [
             ("testRenderHtmlCollection", testRenderHtmlCollection),
             ("testRenderJsonCollection", testRenderJsonCollection),
@@ -20,8 +21,9 @@ class ControllerTests: SwiftonTest {
         ]
     }
 
-    override func doSetUp() {
-        super.doSetUp()
+    override func setUp() {
+        SwiftonConfig.viewsDirectory = (Path(#file).parent() + "Fixtures/Views").description
+        SwiftonConfig.publicDirectory = (Path(#file).parent() + "Fixtures").description
 
         Controller.applicationController = TestApplicationController()
         TestModel.reset()

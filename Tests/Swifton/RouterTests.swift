@@ -1,13 +1,14 @@
-import XCTest
 import Swifton
 import Inquiline
+import PathKit
+import XCTest
 
-class RouterTests: SwiftonTest {
+class RouterTests: XCTestCase {
 
     var router: Router!
     var request: Request!
 
-    override var allTests: [(String, () throws -> Void)] {
+    static var allTests: [(String, RouterTests -> () throws -> Void)] {
         return [
             ("testResourceIndexRoute", testResourceIndexRoute),
             ("testNewResourceRoute", testNewResourceRoute),
@@ -21,8 +22,9 @@ class RouterTests: SwiftonTest {
         ]
     }
 
-    override func doSetUp() {
-        super.doSetUp()
+    override func setUp() {
+        SwiftonConfig.viewsDirectory = (Path(#file).parent() + "Fixtures/Views").description
+        SwiftonConfig.publicDirectory = (Path(#file).parent() + "Fixtures").description
 
         TestModel.reset()
         TestModel.create([
