@@ -1,4 +1,4 @@
-import Inquiline
+import S4
 
 public class Controller {
     public typealias Parameters = [String: String]
@@ -30,7 +30,7 @@ public class Controller {
         get {
             return { (request) in
                 guard let action = self.actions[actionName] else {
-                    return Response(.NotFound, contentType: "text/plain; charset=utf8", body: "Action Not Found")
+                    return Response(status: .notFound, contentType: .Plain, body: "Action Not Found")
                 }
 
                 if let filterResponse = self.runFilters(request, actionName, self.beforeFilters) {
@@ -107,7 +107,7 @@ public class Controller {
 
 public func render(template: String) -> Response {
     let body = StencilView(template).render()
-    return Response(.Ok, contentType: "text/html; charset=utf8", body: body)
+    return Response(status: .ok, contentType: .HTML, body: body)
 }
 
 public func render(template: String, _ object: HTMLRenderable?) -> Response {
@@ -117,13 +117,12 @@ public func render(template: String, _ object: HTMLRenderable?) -> Response {
     } else {
         body = StencilView(template).render()
     }
-    return Response(.Ok, contentType: "text/html; charset=utf8", body: body)
+    return Response(status: .ok, contentType: .HTML, body: body)
 }
 
 public func render(template: String, _ context: [String: Any]) -> Response {
-    var body: String
-    body = StencilView(template, context).render()
-    return Response(.Ok, contentType: "text/html; charset=utf8", body: body)
+    let body = StencilView(template, context).render()
+    return Response(status: .ok, contentType: .HTML, body: body)
 }
 
 public func renderJSON(object: JSONRenderable?) -> Response {
@@ -133,25 +132,24 @@ public func renderJSON(object: JSONRenderable?) -> Response {
     } else {
         body = "null"
     }
-    return Response(.Ok, contentType: "application/json; charset=utf8", body: body)
+    return Response(status: .ok, contentType: .JSON, body: body)
 }
 
 public func renderJSON(context: [String: Any]? = nil) -> Response {
-    var body: String
-    body = JSONView(context).render()
-    return Response(.Ok, contentType: "application/json; charset=utf8", body: body)
+    let body = JSONView(context).render()
+    return Response(status: .ok, contentType: .JSON, body: body)
 }
 
 public func redirectTo(path: String) -> Response {
-    return Response(.Found, headers: [("Location", path)])
+    return Response(status: .found, headers: ["Location": Header(path)])
 }
 
 public func respondTo(request: Request, _ responders: [String: () -> Response]) -> Response {
-    let accepts = request.accept!.split(",")
+    let accepts = request.headers["Accept"].values
     for (accept, response) in responders {
         if accepts.contains(accept.mimeType()) {
             return response()
         }
     }
-    return Response(.NotAcceptable)
+    return Response(status: .notAcceptable)
 }

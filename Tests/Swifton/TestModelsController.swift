@@ -28,6 +28,7 @@ class TestModelsController: TestApplicationController {
     action("edit") { request in
         return render("TestModels/Edit", self.testModel)
     }
+
     action("create") { request in
         TestModel.create(request.params)
         return redirectTo("/testModels")
