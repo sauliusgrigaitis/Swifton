@@ -1,5 +1,4 @@
-import Inquiline
-import Nest
+import S4
 import Foundation
 import URITemplate
 import PathKit
@@ -23,15 +22,15 @@ public class Router {
     public init() {}
 
     public var notFound: Nest.Application = { request in
-        return Response(.NotFound, contentType: "text/plain; charset=utf8", body: "Route Not Found")
+        return Response(.notFound, headers: ["contentType": "text/plain; charset=utf8"], body: "Route Not Found")
     }
 
     public var permissionDenied: Nest.Application = { request in
-        return Response(.NotFound, contentType: "text/plain; charset=utf8", body: "Can't Open File. Permission Denied")
+        return Response(.notFound, headers: ["contentType": "text/plain; charset=utf8"], body: "Can't Open File. Permission Denied")
     }
 
     public var errorReadingFromFile: Nest.Application = { request in
-        return Response(.NotFound, contentType: "text/plain; charset=utf8", body: "Error Reading From File")
+        return Response(.notFound, headers: ["contentType": "text/plain; charset=utf8"], body: "Error Reading From File")
     }
 
     public func resources(name: String, _ controller: Controller) {
@@ -73,8 +72,8 @@ public class Router {
         routes.append((URITemplate(template: uri), .OPTIONS, action))
     }
 
-    public func respond(requestType: RequestType) -> ResponseType {
-        let request = requestType as? Request ?? Request(method: requestType.method, path: requestType.path,
+    public func respond(requestType: Request) -> Response {
+        let request = requestType as? Request ?? Request(method: requestType.method, path: requestType.uri.path!,
             headers: requestType.headers, body: requestType.body)
 
         return ParametersMiddleware().call(request) {
@@ -87,7 +86,7 @@ public class Router {
 
         for (template, method, handler) in routes {
             if newRequest.method == method.rawValue {
-                if let variables = template.extract(newRequest.path) {
+                if let variables = template.extract(newRequest.uri.path!) {
                     for (key, value) in variables {
                         newRequest.params[key] = value
                     }
@@ -103,17 +102,17 @@ public class Router {
         return notFound(newRequest) as! Response
     }
 
-    func serveStaticFile(request: Request) -> ResponseType? {
-        if request.path != "/" {
+    func serveStaticFile(request: Request) -> Response? {
+        if request.uri.path! != "/" {
             let publicPath = Path(SwiftonConfig.publicDirectory)
             if publicPath.exists && publicPath.isDirectory {
-                let filePath = publicPath + String(request.path.characters.dropFirst())
+                let filePath = publicPath + String(request.uri.path?.characters.dropFirst())
                 if filePath.exists {
                     if filePath.isReadable {
                         do {
                             let contents: NSData? = try filePath.read()
                             if let body = String(data:contents!, encoding: NSUTF8StringEncoding) {
-                                return Response(.Ok, contentType: "text/plain; charset=utf8", body: body)
+                                return Response(status: .ok, headers: ["contentType": "text/plain; charset=utf8"], body: body)
                             }
                         } catch {
                             return errorReadingFromFile(request)

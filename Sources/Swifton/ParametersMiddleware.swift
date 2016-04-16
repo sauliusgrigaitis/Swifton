@@ -1,4 +1,4 @@
-import Inquiline
+import S4
 import String
 
 public class ParametersMiddleware: Middleware {

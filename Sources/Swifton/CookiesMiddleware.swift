@@ -1,4 +1,4 @@
-import Inquiline
+import S4
 
 public class CookiesMiddleware: Middleware {
     public func call(request: Request, _ closure: Request -> Response) -> Response {
