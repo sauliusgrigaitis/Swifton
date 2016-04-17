@@ -5,13 +5,13 @@ public class ParametersMiddleware: Middleware {
     public func call(request: Request, _ closure: Request -> Response) -> Response {
         var newRequest = request
         var queryString: String = ""
-        if Method(rawValue: request.method) == .GET {
-            let elements = request.path.split("?", maxSplits: 1)
-            if elements.count > 1 {
-                queryString = request.path.split("?", maxSplits: 1).last!
+        if request.method == .get {
+            let elements = request.uri.path?.split("?", maxSplits: 1)
+            if elements?.count > 1 {
+                queryString = (request.uri.path?.split("?", maxSplits: 1).last)!
             }
         } else {
-            queryString = request.body!
+            queryString = String(request.body)
         }
 
         for keyValue in queryString.split("&") {
@@ -23,12 +23,12 @@ public class ParametersMiddleware: Middleware {
                 }
             }
         }
-        newRequest.method = self.resolveMethod(newRequest)
+        newRequest.method = S4.Method(self.resolveMethod(newRequest))
         return closure(newRequest)
     }
 
     func resolveMethod(request: Request) -> String {
-        if request.method == "POST" {
+        if request.method == .post {
             if let paramsMethod = request.params["_method"] {
                 let paramsMethod = paramsMethod.uppercased()
                 if ["DELETE", "HEAD", "PATCH", "PUT", "OPTIONS"].contains(paramsMethod) {
@@ -36,6 +36,6 @@ public class ParametersMiddleware: Middleware {
                 }
             }
         }
-        return request.method
+        return request.method.description
     }
 }

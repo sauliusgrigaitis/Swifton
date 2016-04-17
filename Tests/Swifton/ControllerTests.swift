@@ -1,5 +1,5 @@
 import Swifton
-import Inquiline
+import S4
 import PathKit
 import XCTest
 

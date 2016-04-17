@@ -143,13 +143,13 @@ public func renderJSON(context: [String: Any]? = nil) -> Response {
 }
 
 public func redirectTo(path: String) -> Response {
-    return S4.Response(status: .found, headers: Headers(["Location": path]))
+    return S4.Response(status: .found, headers: Headers(["Location": Header(path)]))
 }
 
 public func respondTo(request: Request, _ responders: [String: () -> Response]) -> Response {
-    let accepts = request.headers["Accept"].split(separator: ",")
+    let accepts = request.headers["Accept"].values
     for (accept, response) in responders {
-        if S4.accepts.contains(accept.mimeType()) {
+        if accepts.contains(accept.mimeType()) {
             return response()
         }
     }

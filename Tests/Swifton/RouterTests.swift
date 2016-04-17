@@ -1,12 +1,12 @@
 import Swifton
-import Inquiline
+import S4
 import PathKit
 import XCTest
 
 class RouterTests: XCTestCase {
 
     var router: Router!
-    var request: Request!
+    var request: Request
 
     static var allTests: [(String, RouterTests -> () throws -> Void)] {
         return [
