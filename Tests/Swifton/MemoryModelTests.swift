@@ -1,4 +1,4 @@
-import Swifton
+@testable import Swifton
 import XCTest
 
 class MemoryModelTests: XCTestCase {

@@ -4,7 +4,15 @@ extension Request {
 
     public var params: [String: String] {
         get {
-            return storage["swifton-params"] as? [String: String] ?? [:]
+            var params = pathParameters
+
+            if let swiftonParams = storage["swifton-params"] as? [String: String] {
+                for (key, value) in swiftonParams {
+                    params[key] = value
+                }
+            }
+
+            return params
         }
 
         set(params) {

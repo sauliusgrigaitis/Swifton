@@ -1,4 +1,4 @@
-import Swifton
+@testable import Swifton
 import S4
 import PathKit
 import XCTest
@@ -27,10 +27,7 @@ class ControllerTests: XCTestCase {
 
         Controller.applicationController = TestApplicationController()
         TestModel.reset()
-        TestModel.create([
-            "name": "Saulius",
-            "surname": "Grigaitis"
-        ])
+        TestModel.create(["name": "Saulius", "surname": "Grigaitis"])
         request = createRequest()
 
         postRequest = Request(
@@ -41,7 +38,7 @@ class ControllerTests: XCTestCase {
         postRequest.params = ["name": "James", "surname": "Bond"]
     }
 
-    private func createRequest(path path: String = "/", method: S4.Method = .get,
+    private func createRequest(path: String = "/", method: S4.Method = .get,
         headers: Headers = [:], body: String = "") -> Request {
 
         var headers = headers
@@ -59,14 +56,14 @@ class ControllerTests: XCTestCase {
 
     func testRenderHtmlCollection() {
         TestModel.create(["name": "James", "surname": "Bond"])
-        let rendered = controller["index"](request: request)
+        let rendered = try! controller["index"](to: request)
         XCTAssertEqual(rendered.bodyString, "\nSaulius\n\nJames\n\n\n")
     }
 
     func testRenderJsonCollection() {
         TestModel.create(["name": "James", "surname": "Bond"])
         let request = createRequest(headers: ["Accept": "application/json"])
-        let rendered = controller["index"](request: request)
+        let rendered = try! controller["index"](to: request)
 
         let recordsJson: [String] = TestModel.all.map { record in
             let attributes = record.attributes.map { "\"\($0)\": \"\($1)\"" }
@@ -78,24 +75,24 @@ class ControllerTests: XCTestCase {
 
     func testRenderHtmlSingleModel() {
         request.params = ["id": "1"]
-        let rendered = controller["show"](request: request)
+        let rendered = try! controller["show"](to: request)
         XCTAssertEqual(rendered.bodyString, "Saulius\n")
     }
 
     func testRenderHtmlSingleModelWithUTF8() {
         TestModel.create(["name": "ąčęėį"])
         request.params = ["id": "2"]
-        let rendered = controller["show"](request: request)
+        let rendered = try! controller["show"](to: request)
         XCTAssertEqual(rendered.bodyString, "ąčęėį\n")
     }
 
     func testRenderHtmlIncludesHeaderAndFooter() {
-        let rendered = controller["new"](request: request)
+        let rendered = try! controller["new"](to: request)
         XCTAssertEqual(rendered.bodyString, "header\n\nnew\nfooter\n\n")
     }
 
     func testPostRequestToCreateRecord() {
-        controller["create"](request: postRequest)
+        try! controller["create"](to: postRequest)
         let record = TestModel.find(2)!
         XCTAssertEqual(String(record["name"]!), "James")
         XCTAssertEqual(String(record["surname"]!), "Bond")
@@ -103,7 +100,7 @@ class ControllerTests: XCTestCase {
 
     func testRedirect() {
         postRequest.params["id"] = "1"
-        let redirect = controller["update"](request: postRequest)
+        let redirect = try! controller["update"](to: postRequest)
         XCTAssertEqual(redirect.headers["Location"], "/testModels/1")
     }
 
