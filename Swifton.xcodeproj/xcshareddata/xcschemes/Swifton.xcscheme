@@ -42,9 +42,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "______Target_Nest"
-               BuildableName = "libNest.dylib"
-               BlueprintName = "Nest"
+               BlueprintIdentifier = "______Target_OperatingSystem"
+               BuildableName = "libOperatingSystem.dylib"
+               BlueprintName = "OperatingSystem"
                ReferencedContainer = "container:Swifton.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -56,9 +56,37 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "______Target_Inquiline"
-               BuildableName = "libInquiline.dylib"
-               BlueprintName = "Inquiline"
+               BlueprintIdentifier = "______Target_String"
+               BuildableName = "libString.dylib"
+               BlueprintName = "String"
+               ReferencedContainer = "container:Swifton.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "______Target_C7"
+               BuildableName = "libC7.dylib"
+               BlueprintName = "C7"
+               ReferencedContainer = "container:Swifton.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "______Target_S4"
+               BuildableName = "libS4.dylib"
+               BlueprintName = "S4"
                ReferencedContainer = "container:Swifton.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>

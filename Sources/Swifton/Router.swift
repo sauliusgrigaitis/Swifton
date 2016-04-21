@@ -1,37 +1,26 @@
-import Inquiline
-import Nest
 import Foundation
+import S4
 import URITemplate
 import PathKit
 
-public enum Method: String {
-    case DELETE = "DELETE"
-    case GET = "GET"
-    case HEAD = "HEAD"
-    case PATCH = "PATCH"
-    case POST = "POST"
-    case PUT = "PUT"
-    case OPTIONS = "OPTIONS"
-}
-
 public class Router {
     public typealias Action = (Request) -> Response
-    typealias Route = (URITemplate, Method, Action)
+    typealias Route = (URITemplate, S4.Method, Action)
 
     var routes = [Route]()
 
     public init() {}
 
-    public var notFound: Nest.Application = { request in
-        return Response(.NotFound, contentType: "text/plain; charset=utf8", body: "Route Not Found")
+    func notFound(request: Request) -> Response {
+        return Response(status: .notFound, contentType: .Plain, body: "Route Not Found")
     }
 
-    public var permissionDenied: Nest.Application = { request in
-        return Response(.NotFound, contentType: "text/plain; charset=utf8", body: "Can't Open File. Permission Denied")
+    func permissionDenied(request: Request) -> Response {
+        return Response(status: .notFound, contentType: .Plain, body: "Can't Open File. Permission Denied")
     }
 
-    public var errorReadingFromFile: Nest.Application = { request in
-        return Response(.NotFound, contentType: "text/plain; charset=utf8", body: "Error Reading From File")
+    func errorReadingFromFile(request: Request) -> Response {
+        return Response(status: .notFound, contentType: .Plain, body: "Error Reading From File")
     }
 
     public func resources(name: String, _ controller: Controller) {
@@ -46,37 +35,34 @@ public class Router {
     }
 
     public func delete(uri: String, _ action: Action) {
-        routes.append((URITemplate(template: uri), .DELETE, action))
+        routes.append((URITemplate(template: uri), .delete, action))
     }
 
     public func get(uri: String, _ action: Action) {
-        routes.append((URITemplate(template: uri), .GET, action))
+        routes.append((URITemplate(template: uri), .get, action))
     }
 
     public func head(uri: String, _ action: Action) {
-        routes.append((URITemplate(template: uri), .HEAD, action))
+        routes.append((URITemplate(template: uri), .head, action))
     }
 
     public func patch(uri: String, _ action: Action) {
-        routes.append((URITemplate(template: uri), .PATCH, action))
+        routes.append((URITemplate(template: uri), .patch, action))
     }
 
     public func post(uri: String, _ action: Action) {
-        routes.append((URITemplate(template: uri), .POST, action))
+        routes.append((URITemplate(template: uri), .post, action))
     }
 
     public func put(uri: String, _ action: Action) {
-        routes.append((URITemplate(template: uri), .PUT, action))
+        routes.append((URITemplate(template: uri), .put, action))
     }
 
     public func options(uri: String, _ action: Action) {
-        routes.append((URITemplate(template: uri), .OPTIONS, action))
+        routes.append((URITemplate(template: uri), .options, action))
     }
 
-    public func respond(requestType: RequestType) -> ResponseType {
-        let request = requestType as? Request ?? Request(method: requestType.method, path: requestType.path,
-            headers: requestType.headers, body: requestType.body)
-
+    public func respond(request: Request) -> Response {
         return ParametersMiddleware().call(request) {
           CookiesMiddleware().call($0, self.resolveRoute)
         }
@@ -86,8 +72,8 @@ public class Router {
         var newRequest = request
 
         for (template, method, handler) in routes {
-            if newRequest.method == method.rawValue {
-                if let variables = template.extract(newRequest.path) {
+            if newRequest.method == method {
+                if let variables = template.extract(newRequest.uri.path!) {
                     for (key, value) in variables {
                         newRequest.params[key] = value
                     }
@@ -97,23 +83,23 @@ public class Router {
         }
 
         if let staticFile = serveStaticFile(newRequest) {
-            return staticFile as! Response
+            return staticFile
         }
 
-        return notFound(newRequest) as! Response
+        return notFound(newRequest)
     }
 
-    func serveStaticFile(request: Request) -> ResponseType? {
-        if request.path != "/" {
+    func serveStaticFile(request: Request) -> Response? {
+        if request.uri.path != "/" {
             let publicPath = Path(SwiftonConfig.publicDirectory)
             if publicPath.exists && publicPath.isDirectory {
-                let filePath = publicPath + String(request.path.characters.dropFirst())
+                let filePath = publicPath + String(request.uri.path!.characters.dropFirst())
                 if filePath.exists {
                     if filePath.isReadable {
                         do {
                             let contents: NSData? = try filePath.read()
                             if let body = String(data:contents!, encoding: NSUTF8StringEncoding) {
-                                return Response(.Ok, contentType: "text/plain; charset=utf8", body: body)
+                                return Response(status: .ok, contentType: .Plain, body: body)
                             }
                         } catch {
                             return errorReadingFromFile(request)

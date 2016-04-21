@@ -1,17 +1,22 @@
-import Inquiline
+import S4
 import String
 
-public class ParametersMiddleware: Middleware {
+public class ParametersMiddleware: CustomMiddleware {
+
     public func call(request: Request, _ closure: Request -> Response) -> Response {
         var newRequest = request
-        var queryString: String = ""
-        if Method(rawValue: request.method) == .GET {
-            let elements = request.path.split("?", maxSplits: 1)
-            if elements.count > 1 {
-                queryString = request.path.split("?", maxSplits: 1).last!
+        var queryString = ""
+
+        if request.method == .get {
+            if let elements = request.uri.path?.split("?", maxSplits: 1) {
+                if let query = elements.last {
+                    queryString = query
+                }
             }
         } else {
-            queryString = request.body!
+            if let body = request.bodyString {
+                queryString = body
+            }
         }
 
         for keyValue in queryString.split("&") {
@@ -19,23 +24,33 @@ public class ParametersMiddleware: Middleware {
             if let name = tokens.first, value = tokens.last {
                 if let parsedName = try? String(percentEncoded: name),
                     let parsedValue = try? String(percentEncoded: value) {
-                    newRequest.params[parsedName] = parsedValue           
+                    newRequest.params[parsedName] = parsedValue
                 }
             }
         }
-        newRequest.method = self.resolveMethod(newRequest)
+
+        newRequest.method = resolveMethod(newRequest)
         return closure(newRequest)
     }
 
-    func resolveMethod(request: Request) -> String {
-        if request.method == "POST" {
-            if let paramsMethod = request.params["_method"] {
-                let paramsMethod = paramsMethod.uppercased()
-                if ["DELETE", "HEAD", "PATCH", "PUT", "OPTIONS"].contains(paramsMethod) {
-                    return paramsMethod
-                }
-            }
+    func resolveMethod(request: Request) -> S4.Method {
+        guard request.method == .post else { return request.method }
+        guard let paramsMethod = request.params["_method"] else { return request.method }
+
+        switch paramsMethod.uppercased() {
+        case "DELETE":
+            return .delete
+        case "HEAD":
+            return .head
+        case "PATCH":
+            return .patch
+        case "PUT":
+            return .put
+        case "OPTIONS":
+            return .options
+        default:
+            return request.method
         }
-        return request.method
     }
+
 }

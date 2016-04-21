@@ -1,5 +1,5 @@
 import Swifton
-import Inquiline
+import S4
 import PathKit
 import XCTest
 
@@ -34,65 +34,64 @@ class RouterTests: XCTestCase {
 
         router = Router()
         router.resources("testModels", TestModelsController())
-        request = Request(
-            method: "GET",
-            path: "/testModels/new",
-            headers: [("Accept", "text/html")],
-            body: ""
+    }
+
+    func createRequest(path path: String, method: S4.Method, body: String = "") -> Request {
+        return Request(
+            method: method,
+            uri: URI(path: path),
+            headers: ["Accept": "text/html"],
+            body: Data(body)
         )
     }
 
     func testResourceIndexRoute() {
-        request.path = "/testModels"
+        let request = createRequest(path: "/testModels", method: .get)
         let response = router.respond(request)
-        XCTAssertEqual(response.body, "\nSaulius\n\n\n")
+        XCTAssertEqual(response.bodyString, "\nSaulius\n\n\n")
     }
 
     func testNewResourceRoute() {
+        let request = createRequest(path: "/testModels/new", method: .get)
         let response = router.respond(request)
-        XCTAssertEqual(response.body, "header\n\nnew\nfooter\n\n")
+        XCTAssertEqual(response.bodyString, "header\n\nnew\nfooter\n\n")
     }
 
     func testShowResourceRoute() {
-        request.path = "/testModels/1"
+        let request = createRequest(path: "/testModels/1", method: .get)
         let response = router.respond(request)
-        XCTAssertEqual(response.body, "Saulius\n")
+        XCTAssertEqual(response.bodyString, "Saulius\n")
     }
 
     func testEditResourceRoute() {
-        request.path = "/testModels/1/edit"
+        let request = createRequest(path: "/testModels/1/edit", method: .get)
         let response = router.respond(request)
-        XCTAssertEqual(response.body, "Grigaitis\n")
+        XCTAssertEqual(response.bodyString, "Grigaitis\n")
     }
 
     func testCreateResourcePath() {
-        request.path = "/testModels"
-        request.method = "POST"
+        let request = createRequest(path: "testModels", method: .post)
         let response = router.respond(request)
-        XCTAssertNil(response.body)
+        XCTAssertEqual(response.bodyString, "Route Not Found")
     }
 
     func testDeleteResourcePath() {
-        request.path = "/testModels/1"
-        request.method = "POST"
-        request.body = "_method=DELETE"
+        let request = createRequest(path: "/testModels/1", method: .post, body: "_method=DELETE")
         router.respond(request)
         XCTAssertEqual(TestModel.all.count, 0)
     }
 
     func testUpdateResourcePath() {
-        request.path = "/testModels/1"
-        request.method = "POST"
-        request.body = "_method=PATCH&name=James"
+        let request = createRequest(path: "/testModels/1", method: .post, body: "_method=PATCH&name=James")
         router.respond(request)
         let record = TestModel.find(1)!
         XCTAssertEqual(String(record["name"]!), "James")
     }
 
     func testServeStaticFile() {
-        request.path = "/static.txt"
+        let request = createRequest(path: "/static.txt", method: .get)
         let staticFile = router.respond(request)
-        XCTAssertEqual(staticFile.body, "static\n")
+        XCTAssertEqual(staticFile.bodyString, "static\n")
     }
 
 //    TODO: Fix
@@ -103,15 +102,13 @@ class RouterTests: XCTestCase {
 //    }
 
     func testMissingRouteError() {
-        request.path = "/nonExisting"
+        let request = createRequest(path: "/nonExisting", method: .get)
         let response = router.respond(request)
-        XCTAssertEqual(response.body, "Route Not Found")
+        XCTAssertEqual(response.bodyString, "Route Not Found")
     }
 
     func testUTF8PostParams() {
-        request.path = "/testModels"
-        request.method = "POST"
-        request.body = "name=Kęstutis&surname=Švitrigaila"
+        let request = createRequest(path: "/testModels", method: .post, body: "name=Kęstutis&surname=Švitrigaila")
         router.respond(request)
         let record = TestModel.find(2)!
         XCTAssertEqual(String(record.attributes["name"]!), "Kęstutis")

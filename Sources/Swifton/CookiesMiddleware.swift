@@ -1,9 +1,10 @@
-import Inquiline
+import S4
 
-public class CookiesMiddleware: Middleware {
+public class CookiesMiddleware: CustomMiddleware {
+
     public func call(request: Request, _ closure: Request -> Response) -> Response {
         var newRequest = request
-        if let rawCookie = newRequest["Cookie"] {
+        if let rawCookie = newRequest.headers["Cookie"].values.first {
             let cookiePairs = rawCookie.split(";")
             for cookie in cookiePairs {
                 let keyValue = cookie.split("=")
@@ -12,8 +13,8 @@ public class CookiesMiddleware: Middleware {
         }
 
         var response = closure(newRequest)
-
-        response["Set-Cookie"] = response.cookies.map { $0 + "=" + $1 }.joined(separator: ";")
+        response.headers["Set-Cookie"] = Header(response.cookies.map { "\($0)=\($1)" }.joined(separator: ";"))
         return response
     }
+
 }
