@@ -26,24 +26,24 @@ public class MemoryModel: HTMLRenderable, JSONRenderable, Equatable {
         }
     }
 
-    public static func create(attributes: [String: String]) -> Self {
+    public static func create(_ attributes: [String: String]) -> Self {
         let resolvedAttributes = self.resolveAttributes(attributes)
         let new = self.init(resolvedAttributes)
         all.append(new)
         return new
     }
 
-    public static func find(id: String?) -> MemoryModel? {
+    public static func find(_ id: String?) -> MemoryModel? {
         guard let stringID = id else { return nil }
         guard let intID = Int(stringID) else { return nil }
         return find(intID)
     }
 
-    public static func find(id: Int?) -> MemoryModel? {
+    public static func find(_ id: Int?) -> MemoryModel? {
         return all.filter { $0.id == id }.first
     }
 
-    public static func destroy(model: MemoryModel?) {
+    public static func destroy(_ model: MemoryModel?) {
         if let m = model {
             all = all.filter({ $0.id != m.id })
         }
@@ -64,11 +64,11 @@ public class MemoryModel: HTMLRenderable, JSONRenderable, Equatable {
         id = 1
     }
 
-    public func update(attributes: [String: String]) {
+    public func update(_ attributes: [String: String]) {
         self.attributes = MemoryModel.resolveAttributes(attributes)
     }
 
-    static func resolveAttributes(attributes: [String: String]) -> [String: Any] {
+    static func resolveAttributes(_ attributes: [String: String]) -> [String: Any] {
         var attrs = [String: Any]()
         for (key, value) in attributes {
             if let integer: Int = Int(value) {

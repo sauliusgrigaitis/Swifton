@@ -117,6 +117,6 @@ internal func MimeType(ext: String?) -> String {
 
 extension String {
     public func mimeType() -> String {
-        return MimeType(self)
+        return MimeType(ext: self)
     }
 }

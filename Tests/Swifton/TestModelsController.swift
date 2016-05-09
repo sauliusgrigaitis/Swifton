@@ -1,4 +1,4 @@
-import Swifton
+@testable import Swifton
 
 class TestModelsController: TestApplicationController {
     var testModel: TestModel?
@@ -45,7 +45,10 @@ class TestModelsController: TestApplicationController {
     }
 
     filter("setTestModel") { request in
-        guard let t = TestModel.find(request.params["id"]) else { return redirectTo("/testModels") }
+        guard let t = TestModel.find(request.params["id"]) else {
+            return redirectTo("/testModels")
+        }
+
         self.testModel = t as? TestModel
         return self.next
     }

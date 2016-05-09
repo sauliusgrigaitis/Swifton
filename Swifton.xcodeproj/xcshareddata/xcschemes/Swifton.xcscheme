@@ -42,20 +42,6 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "______Target_OperatingSystem"
-               BuildableName = "libOperatingSystem.dylib"
-               BlueprintName = "OperatingSystem"
-               ReferencedContainer = "container:Swifton.xcodeproj">
-            </BuildableReference>
-         </BuildActionEntry>
-         <BuildActionEntry
-            buildForTesting = "YES"
-            buildForRunning = "YES"
-            buildForProfiling = "YES"
-            buildForArchiving = "YES"
-            buildForAnalyzing = "YES">
-            <BuildableReference
-               BuildableIdentifier = "primary"
                BlueprintIdentifier = "______Target_String"
                BuildableName = "libString.dylib"
                BlueprintName = "String"
@@ -98,9 +84,135 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "______Target_URITemplate"
-               BuildableName = "libURITemplate.dylib"
-               BlueprintName = "URITemplate"
+               BlueprintIdentifier = "______Target_POSIXRegex"
+               BuildableName = "libPOSIXRegex.dylib"
+               BlueprintName = "POSIXRegex"
+               ReferencedContainer = "container:Swifton.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "______Target_StructuredData"
+               BuildableName = "libStructuredData.dylib"
+               BlueprintName = "StructuredData"
+               ReferencedContainer = "container:Swifton.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "______Target_MediaType"
+               BuildableName = "libMediaType.dylib"
+               BlueprintName = "MediaType"
+               ReferencedContainer = "container:Swifton.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "______Target_CURIParser"
+               BuildableName = "libCURIParser.dylib"
+               BlueprintName = "CURIParser"
+               ReferencedContainer = "container:Swifton.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "______Target_URI"
+               BuildableName = "libURI.dylib"
+               BlueprintName = "URI"
+               ReferencedContainer = "container:Swifton.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "______Target_HTTP"
+               BuildableName = "libHTTP.dylib"
+               BlueprintName = "HTTP"
+               ReferencedContainer = "container:Swifton.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "______Target_PathParameterMiddleware"
+               BuildableName = "libPathParameterMiddleware.dylib"
+               BlueprintName = "PathParameterMiddleware"
+               ReferencedContainer = "container:Swifton.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "______Target_RegexRouteMatcher"
+               BuildableName = "libRegexRouteMatcher.dylib"
+               BlueprintName = "RegexRouteMatcher"
+               ReferencedContainer = "container:Swifton.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "______Target_TrieRouteMatcher"
+               BuildableName = "libTrieRouteMatcher.dylib"
+               BlueprintName = "TrieRouteMatcher"
+               ReferencedContainer = "container:Swifton.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "______Target_Router"
+               BuildableName = "libRouter.dylib"
+               BlueprintName = "Router"
                ReferencedContainer = "container:Swifton.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>

@@ -25,13 +25,13 @@ struct StencilView {
         let appPath = Path(SwiftonConfig.viewsDirectory)
         let paths = [appPath + templatePath.joined(separator: "/")]
         let templateLoader = TemplateLoader(paths: paths)
-        self.template = templateLoader.loadTemplate(templateName + ".html.stencil")
+        self.template = templateLoader.loadTemplate(name: templateName + ".html.stencil")
     }
 
     func render() -> String {
         guard template != nil else { return "Template Not Found" }
         guard context != nil else { return try! template!.render() }
-        return try! template!.render(Context(dictionary: context!))
+        return try! template!.render(context: Context(dictionary: context!))
     }
 }
 

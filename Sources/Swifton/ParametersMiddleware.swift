@@ -1,14 +1,14 @@
 import S4
 import String
 
-public class ParametersMiddleware: CustomMiddleware {
+public class ParametersMiddleware: Middleware {
 
-    public func call(request: Request, _ closure: Request -> Response) -> Response {
+    public func respond(to request: Request, chainingTo next: Responder) throws -> Response {
         var newRequest = request
         var queryString = ""
 
         if request.method == .get {
-            if let elements = request.uri.path?.split("?", maxSplits: 1) {
+            if let elements = request.uri.path?.split(separator: "?", maxSplits: 1) {
                 if let query = elements.last {
                     queryString = query
                 }
@@ -19,8 +19,8 @@ public class ParametersMiddleware: CustomMiddleware {
             }
         }
 
-        for keyValue in queryString.split("&") {
-            let tokens = keyValue.split("=", maxSplits: 1)
+        for keyValue in queryString.split(separator: "&") {
+            let tokens = keyValue.split(separator: "=", maxSplits: 1)
             if let name = tokens.first, value = tokens.last {
                 if let parsedName = try? String(percentEncoded: name),
                     let parsedValue = try? String(percentEncoded: value) {
@@ -29,8 +29,8 @@ public class ParametersMiddleware: CustomMiddleware {
             }
         }
 
-        newRequest.method = resolveMethod(newRequest)
-        return closure(newRequest)
+        newRequest.method = resolveMethod(request: newRequest)
+        return try next.respond(to: newRequest)
     }
 
     func resolveMethod(request: Request) -> S4.Method {

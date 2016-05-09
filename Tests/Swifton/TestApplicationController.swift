@@ -1,4 +1,4 @@
-import Swifton
+@testable import Swifton
 
 class TestApplicationController: Controller {
     override func controller() {

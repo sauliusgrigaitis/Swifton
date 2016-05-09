@@ -1,4 +1,5 @@
 os:
+- osx
 - linux
 language: generic
 sudo: required
@@ -11,7 +12,6 @@ script:
 - . ~/.swiftenv/init
 - rm -rf Packages .build
 - swift build --fetch
-- rm -rf Packages/*/Tests
 - swift build
 - swift test
 - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then swiftlint; fi
