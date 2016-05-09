@@ -11,7 +11,7 @@ extension Router {
                 if let staticFile = serveStaticFile(request: request) {
                     return staticFile
                 } else {
-                    return Response(status: .notFound, contentType: .Plain, body: "Route Not Found")
+                    return Response(status: .notFound, body: "Route Not Found")
                 }
             }
 
@@ -29,16 +29,16 @@ extension Router {
         guard filePath.exists else { return nil }
 
         guard filePath.isReadable else {
-            return Response(status: .notFound, contentType: .Plain, body: "Can't Open File. Permission Denied")
+            return Response(status: .notFound, body: "Can't Open File. Permission Denied")
         }
 
         do {
             let contents = try filePath.read()
             if let body = String(data: contents, encoding: NSUTF8StringEncoding) {
-                return Response(status: .ok, contentType: .Plain, body: body)
+                return Response(status: .ok, body: body)
             }
         } catch {
-            return Response(status: .notFound, contentType: .Plain, body: "Error Reading From File")
+            return Response(status: .notFound, body: "Error Reading From File")
         }
 
         return nil

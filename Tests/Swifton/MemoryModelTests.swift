@@ -5,7 +5,7 @@ class MemoryModelTests: XCTestCase {
 
     var record: TestModel!
 
-    static var allTests: [(String, MemoryModelTests -> () throws -> Void)] {
+    static var allTests: [(String, (MemoryModelTests) -> () throws -> Void)] {
         return [
             ("testAddRecordToCollection", testAddRecordToCollection),
             ("testFindRecordByStringId", testFindRecordByStringId),

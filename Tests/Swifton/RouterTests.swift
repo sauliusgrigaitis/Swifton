@@ -8,13 +8,14 @@ class RouterTests: XCTestCase {
     var router: Router!
     var request: Request!
 
-    static var allTests: [(String, RouterTests -> () throws -> Void)] {
+    static var allTests: [(String, (RouterTests) -> () throws -> Void)] {
         return [
             ("testResourceIndexRoute", testResourceIndexRoute),
             ("testNewResourceRoute", testNewResourceRoute),
             ("testShowResourceRoute", testShowResourceRoute),
             ("testEditResourceRoute", testEditResourceRoute),
             ("testCreateResourcePath", testCreateResourcePath),
+            ("testDeleteResourcePath", testDeleteResourcePath),
             ("testUpdateResourcePath", testUpdateResourcePath),
             ("testServeStaticFile", testServeStaticFile),
             ("testMissingRouteError", testMissingRouteError),

@@ -1,17 +1,15 @@
 import S4
 
 public class Controller {
-    public typealias Parameters = [String: String]
+
     public typealias Action = Respond
     public typealias Filter = (request: Request) -> Response?
-    public typealias FilterCollection = [String: FilterOptions]
-    public typealias FilterOptions = [String: [String]]?
 
-    public static var applicationController = Controller()
     var actions = [String: Action]()
     var filters = [String: Filter]()
     var beforeFilters = FilterCollection()
     var afterFilters = FilterCollection()
+
     public let next: Response? = nil
 
     public init() { controller() }
@@ -30,16 +28,16 @@ public class Controller {
         get {
             return { request in
                 guard let action = self.actions[actionName] else {
-                    return Response(status: .notFound, contentType: .Plain, body: "Action Not Found")
+                    return Response(status: .notFound, body: "Action Not Found")
                 }
 
-                if let filterResponse = self.runFilters(request, actionName, self.beforeFilters) {
+                if let filterResponse = self.run(filters: self.beforeFilters, forAction: actionName, request: request) {
                     return filterResponse
                 }
 
                 let response = try! action(to: request)
 
-                if let filterResponse = self.runFilters(request, actionName, self.afterFilters) {
+                if let filterResponse = self.run(filters: self.afterFilters, forAction: actionName, request: request) {
                     return filterResponse
                 }
 
@@ -52,57 +50,44 @@ public class Controller {
         }
     }
 
-    func runFilters(_ request: Request, _ actionName: String, _ filterCollection: FilterCollection) -> Response? {
-        for (filter, options) in filterCollection {
-            // prefer filter in child controller
-            if let selectedFilter = self.filters[filter] {
-                if let response = runFilter(selectedFilter, actionName, request, options) {
-                    return response
-                }
-            } else if let selectedFilter = Controller.applicationController.filters[filter] {
-                if let response = selectedFilter(request: request) {
-                    return response
-                }
-            }
-        }
-        return nil
+    public func beforeAction(_ filter: String) {
+        beforeFilters.set(filter: filter)
     }
 
-    func runFilter(_ filter: Filter, _ actionName: String, _ request: Request, _ options: FilterOptions) -> Response? {
-        // if "only" option is used then check if action is in the list
-        if let opts = options {
-            if let skip = opts["skip"] {
-                if skip.contains(actionName) {
-                    return nil
-                } else {
-                    if let response = filter(request: request) {
-                        return response
-                    }
-                }
+    public func beforeAction(_ filter: String, only actions: String...) {
+        beforeFilters.set(filter: filter, onlyForActions: actions)
+    }
+
+    public func beforeAction(_ filter: String, except actions: String...) {
+        beforeFilters.set(filter: filter, exceptForActions: actions)
+    }
+
+    public func afterAction(_ filter: String) {
+        afterFilters.set(filter: filter)
+    }
+
+    public func afterAction(_ filter: String, only actions: String...) {
+        afterFilters.set(filter: filter, onlyForActions: actions)
+    }
+
+    public func afterAction(_ filter: String, except actions: String...) {
+        afterFilters.set(filter: filter, exceptForActions: actions)
+    }
+
+    private func run(filters: FilterCollection, forAction action: String, request: Request) -> Response? {
+        for filterName in filters.forAction(action) {
+            guard let filter = self.filters[filterName] else {
+                return Response(status: .internalServerError, body: "Undefined filter: \(filterName)")
             }
-            if let only = opts["only"] {
-                if only.contains(actionName) {
-                    if let response = filter(request: request) {
-                        return response
-                    }
-                }
-            }
-            // otherwise run filter without any checking
-        } else {
+
             if let response = filter(request: request) {
                 return response
             }
         }
+
         return nil
     }
 
-    public func beforeAction(_ filter: String, _ options: FilterOptions = nil) -> Void {
-        beforeFilters[filter] = options
-    }
-
-    public func afterAction(filter: String, _ options: FilterOptions = nil) -> Void {
-        afterFilters[filter] = options
-    }
 }
 
 public func render(_ template: String) -> Response {
