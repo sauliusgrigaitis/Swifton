@@ -9,7 +9,7 @@ class ControllerTests: XCTestCase {
     var request: Request!
     var postRequest: Request!
 
-    static var allTests: [(String, ControllerTests -> () throws -> Void)] {
+    static var allTests: [(String, (ControllerTests) -> () throws -> Void)] {
         return [
             ("testRenderHtmlCollection", testRenderHtmlCollection),
             ("testRenderJsonCollection", testRenderJsonCollection),
@@ -25,7 +25,6 @@ class ControllerTests: XCTestCase {
         SwiftonConfig.viewsDirectory = (Path(#file).parent() + "Fixtures/Views").description
         SwiftonConfig.publicDirectory = (Path(#file).parent() + "Fixtures").description
 
-        Controller.applicationController = TestApplicationController()
         TestModel.reset()
         TestModel.create(["name": "Saulius", "surname": "Grigaitis"])
         request = createRequest()

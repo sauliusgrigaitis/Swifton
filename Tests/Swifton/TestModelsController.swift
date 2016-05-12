@@ -4,10 +4,11 @@ class TestModelsController: TestApplicationController {
     var testModel: TestModel?
 
     override func controller() {
+    super.controller()
 
-    beforeAction("setTestModel", ["only": ["show", "edit", "update", "destroy"]])
-    beforeAction("reset", ["only": ["show"]])
-    beforeAction("crash", ["skip": ["index", "show", "new", "edit", "create", "update", "destroy"]])
+    beforeAction("setTestModel", only: "show", "edit", "update", "destroy")
+    beforeAction("reset", only: "show")
+    beforeAction("crash", except: "index", "show", "new", "edit", "create", "update", "destroy")
 
     action("index") { request in
         let testModels = ["testModels": TestModel.allAttributes()]
