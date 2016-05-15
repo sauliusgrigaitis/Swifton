@@ -79,7 +79,7 @@ class TodosController: ApplicationController {
     override func controller() {
 
     // sets before filter setTodo only for specified actions.
-    beforeAction("setTodo", ["only": ["show", "edit", "update", "destroy"]])
+    beforeAction("setTodo", only: ["show", "edit", "update", "destroy"])
 
     // render all Todo instances with Index template (in Views/Todos/Index.html.stencil)
     action("index") { request in
