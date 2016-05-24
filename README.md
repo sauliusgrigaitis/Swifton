@@ -240,9 +240,7 @@ serve { request in
 
 ## Application Server
 
-Swifton comes with [Currasow](https://github.com/kylef/Curassow) server. [Curassow](https://github.com/kylef/Curassow) is a Swift [Nest](https://github.com/nestproject/Nest) HTTP Server. It uses the pre-fork worker model and it's similar to Python's Gunicorn and Ruby's Unicorn. Swifton applications should run on other [Nest](https://github.com/nestproject/Nest) servers with none or minimal modifications.
-
-Curassow provides a command line interface to configure the address you want to listen on and the amount of workers you wish to use.
+Swifton comes with [VeniceX](https://github.com/VeniceX/Venice) based HTTP server. Swifton supports [S4](https://github.com/open-swift/S4) HTTP standards for Swift so you can easily use any [S4](https://github.com/open-swift/S4) supporting server. 
 
 ### Building for production
 
@@ -251,33 +249,6 @@ Build ```release``` configuration for better performance:
 ```shell
 $ swift build --configuration release
 ```
-
-### Setting the workers
-
-```shell
-$ ./.build/release/Swifton-TodoApp --workers 4 
-[arbiter] Listening on 0.0.0.0:8000
-[arbiter] Started worker process 18405
-[arbiter] Started worker process 18406
-[arbiter] Started worker process 18407
-```
-
-### Configuring the address
-
-```shell
-$ ./.build/release/Swifton-TodoApp --bind 127.0.0.1:9000
-[arbiter] Listening on 127.0.0.1:9000
-```
-
-### Configuring worker timeouts
-
-By default, Curassow will kill and restart workers after 30 seconds if it
-hasn't responded to the master process.
-
-```shell
-$ ./.build/release/Swifton-TodoApp --timeout 30
-```
-
 ## Deployment
 
 ### Heroku
