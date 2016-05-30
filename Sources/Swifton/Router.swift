@@ -34,12 +34,15 @@ extension Router {
 
         do {
             let contents = try filePath.read()
+            var contentType = ContentType.Plain
+            if let fileExtension = filePath.`extension`, let contentTypeRaw = Swifton.mimeTypes[fileExtension], let resolvedContentType = ContentType(rawValue: contentTypeRaw) {
+                contentType = resolvedContentType
+            }
+            print(contentType)
             if let body = String(data: contents, encoding: NSUTF8StringEncoding) {
-                return Response(status: .ok, body: body)
+                return Response(status: .ok, contentType: contentType, body: body)
             }
         } catch {
-            return Response(status: .notFound, body: "Error Reading From File")
-        }
 
         return nil
     }
