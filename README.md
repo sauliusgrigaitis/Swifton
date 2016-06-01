@@ -36,12 +36,13 @@ Contributions are more than welcome! The easiest way to start contributing to Sw
 
 ## Routing
 
-Swifton comes with ready to use Router, also you can use any router as long as it accepts Request and returns Response. Routes are defined in ```main.swift``` file. Configured Router is passed to [Nest](https://github.com/nestproject/Nest) interface supporting server. Swifton Router supports [RFC6570](https://tools.ietf.org/html/rfc6570) URI Templates via [URITemplate](https://github.com/kylef/URITemplate.swift) library. Router allows to define ```resources``` and regular routes.
+Swifton comes with ready to use Router, also you can use any router as long as it accepts Request and returns Response. Routes are defined in ```main.swift``` file. Configured Router is passed to [S4](https://github.com/open-swift) interface supporting server. Router allows to define ```resources``` and regular routes.
 
 ```swift
 ...
-let router = Router()
-router.resources("todos", TodosController())
+let router = Router.create { route in
+  route.resources("todos", controller: TodosController())
+}
 ...
 ```
 
