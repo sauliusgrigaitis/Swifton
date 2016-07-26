@@ -1,8 +1,9 @@
 import S4
 
 public class Controller {
+
     public typealias Action = Respond
-    public typealias Filter = (request:Request) -> Response?
+    public typealias Filter = (request: Request) -> Response?
 
     var actions = [String: Action]()
     var filters = [String: Filter]()
@@ -11,12 +12,9 @@ public class Controller {
 
     public let next: Response? = nil
 
-    public init() {
-        controller()
-    }
+    public init() { controller() }
 
-    public func controller() {
-    }
+    public func controller() {}
 
     public func action(_ name: String, body: Action) {
         actions[name] = body
@@ -28,8 +26,7 @@ public class Controller {
 
     public subscript(actionName: String) -> Action {
         get {
-            return {
-                request in
+            return { request in
                 guard let action = self.actions[actionName] else {
                     return Response(status: .notFound, body: "Action Not Found")
                 }
@@ -90,6 +87,7 @@ public class Controller {
 
         return nil
     }
+
 }
 
 public func render(_ template: String) -> Response {
@@ -107,7 +105,7 @@ public func render(_ template: String, _ object: HTMLRenderable?) -> Response {
     return Response(status: .ok, contentType: .HTML, body: body)
 }
 
-public func render(_ template: String, _ context: [String:Any]) -> Response {
+public func render(_ template: String, _ context: [String: Any]) -> Response {
     let body = StencilView(template, context).render()
     return Response(status: .ok, contentType: .HTML, body: body)
 }
@@ -122,7 +120,7 @@ public func renderJSON(object: JSONRenderable?) -> Response {
     return Response(status: .ok, contentType: .JSON, body: body)
 }
 
-public func renderJSON(_ context: [String:Any]? = nil) -> Response {
+public func renderJSON(_ context: [String: Any]? = nil) -> Response {
     let body = JSONView(context).render()
     return Response(status: .ok, contentType: .JSON, body: body)
 }
@@ -131,7 +129,7 @@ public func redirectTo(_ path: String) -> Response {
     return Response(status: .found, headers: ["Location": Header(path)])
 }
 
-public func respondTo(_ request: Request, _ responders: [String:() -> Response]) -> Response {
+public func respondTo(_ request: Request, _ responders: [String: () -> Response]) -> Response {
     let accepts = request.headers["Accept"].values.first?.split(separator: ",") ?? []
     for (accept, response) in responders {
         if accepts.contains(accept.mimeType()) {
