@@ -1,9 +1,8 @@
 import S4
 
 public class Controller {
-
     public typealias Action = Respond
-    public typealias Filter = (request: Request) -> Response?
+    public typealias Filter = (request:Request) -> Response?
 
     var actions = [String: Action]()
     var filters = [String: Filter]()
@@ -12,9 +11,12 @@ public class Controller {
 
     public let next: Response? = nil
 
-    public init() { controller() }
+    public init() {
+        controller()
+    }
 
-    public func controller() {}
+    public func controller() {
+    }
 
     public func action(_ name: String, body: Action) {
         actions[name] = body
@@ -26,7 +28,8 @@ public class Controller {
 
     public subscript(actionName: String) -> Action {
         get {
-            return { request in
+            return {
+                request in
                 guard let action = self.actions[actionName] else {
                     return Response(status: .notFound, body: "Action Not Found")
                 }
@@ -87,7 +90,6 @@ public class Controller {
 
         return nil
     }
-
 }
 
 public func render(_ template: String) -> Response {
@@ -105,7 +107,7 @@ public func render(_ template: String, _ object: HTMLRenderable?) -> Response {
     return Response(status: .ok, contentType: .HTML, body: body)
 }
 
-public func render(_ template: String, _ context: [String: Any]) -> Response {
+public func render(_ template: String, _ context: [String:Any]) -> Response {
     let body = StencilView(template, context).render()
     return Response(status: .ok, contentType: .HTML, body: body)
 }
@@ -120,7 +122,7 @@ public func renderJSON(object: JSONRenderable?) -> Response {
     return Response(status: .ok, contentType: .JSON, body: body)
 }
 
-public func renderJSON(_ context: [String: Any]? = nil) -> Response {
+public func renderJSON(_ context: [String:Any]? = nil) -> Response {
     let body = JSONView(context).render()
     return Response(status: .ok, contentType: .JSON, body: body)
 }
@@ -129,7 +131,7 @@ public func redirectTo(_ path: String) -> Response {
     return Response(status: .found, headers: ["Location": Header(path)])
 }
 
-public func respondTo(_ request: Request, _ responders: [String: () -> Response]) -> Response {
+public func respondTo(_ request: Request, _ responders: [String:() -> Response]) -> Response {
     let accepts = request.headers["Accept"].values.first?.split(separator: ",") ?? []
     for (accept, response) in responders {
         if accepts.contains(accept.mimeType()) {
@@ -137,4 +139,43 @@ public func respondTo(_ request: Request, _ responders: [String: () -> Response]
         }
     }
     return Response(status: .notAcceptable)
+}
+
+
+public extension Controller {
+    enum REST: String {
+        case Index = "index", New = "new", Create = "create", Show = "show", Edit = "edit", Update = "update", Destroy = "destroy"
+    }
+
+    public func index(body: Action) {
+        action(.Index, body: body)
+    }
+
+    public func new(body: Action) {
+        action(.New, body: body)
+    }
+
+    public func create(body: Action) {
+        action(.Create, body: body)
+    }
+
+    public func show(body: Action) {
+        action(.Show, body: body)
+    }
+
+    public func edit(body: Action) {
+        action(.Edit, body: body)
+    }
+
+    public func update(body: Action) {
+        action(.Update, body: body)
+    }
+
+    public func destroy(body: Action) {
+        action(.Destroy, body: body)
+    }
+
+    private func action(_ type: REST, body: Action) {
+        action(type.rawValue, body: body)
+    }
 }
