@@ -78,7 +78,7 @@ class TodosController: ApplicationController {
     // shared todo variable used to pass value between setTodo filter and actions
     var todo: Todo?    
     override func controller() {
-
+    super.controller()
     // sets before filter setTodo only for specified actions.
     beforeAction("setTodo", only: ["show", "edit", "update", "destroy"])
 
