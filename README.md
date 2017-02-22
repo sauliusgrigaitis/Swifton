@@ -1,6 +1,4 @@
-[![TAILOR SWIFT ON RAILS](https://pbs.twimg.com/media/BspM9nCCcAAKcij.jpg)](https://youtu.be/jYa1eI1hpDE?t=221)
-
-*(Taylor Swift on Rails. "Mean" Performance)*
+IMPORTANT! We don't see any way how to make web development as great as Ruby on Rails or Django with a very static nature of current Swift. We hope that things will change at some point and we will return to active development.
 
 # Swifton
 
