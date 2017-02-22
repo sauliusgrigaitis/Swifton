@@ -138,3 +138,42 @@ public func respondTo(_ request: Request, _ responders: [String: () -> Response]
     }
     return Response(status: .notAcceptable)
 }
+
+
+public extension Controller {
+    enum REST: String {
+        case Index = "index", New = "new", Create = "create", Show = "show", Edit = "edit", Update = "update", Destroy = "destroy"
+    }
+
+    public func index(body: Action) {
+        action(.Index, body: body)
+    }
+
+    public func new(body: Action) {
+        action(.New, body: body)
+    }
+
+    public func create(body: Action) {
+        action(.Create, body: body)
+    }
+
+    public func show(body: Action) {
+        action(.Show, body: body)
+    }
+
+    public func edit(body: Action) {
+        action(.Edit, body: body)
+    }
+
+    public func update(body: Action) {
+        action(.Update, body: body)
+    }
+
+    public func destroy(body: Action) {
+        action(.Destroy, body: body)
+    }
+
+    private func action(_ type: REST, body: Action) {
+        action(type.rawValue, body: body)
+    }
+}
